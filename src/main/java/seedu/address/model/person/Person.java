@@ -22,18 +22,23 @@ public class Person {
     private final Email email;
 
     // Data fields
-    private final Address address;
+//    private final Address address;
+    private final Company company;
+    private final Position position;
     private final Set<Tag> tags = new HashSet<>();
+
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
+    public Person(Name name, Email email, Phone phone, Company company, Position position, Set<Tag> tags) {
+        requireAllNonNull(name, phone, email, company, position, tags);
         this.name = name;
         this.phone = phone;
         this.email = email;
-        this.address = address;
+//        this.address = address;
+        this.company = company;
+        this.position = position;
         this.tags.addAll(tags);
     }
 
@@ -49,8 +54,14 @@ public class Person {
         return email;
     }
 
-    public Address getAddress() {
-        return address;
+//    public Address getAddress() {
+//        return address;
+//    }
+
+    public Company getCompany() { return company; }
+
+    public Position getPosition() {
+        return position;
     }
 
     /**
@@ -93,14 +104,15 @@ public class Person {
         return name.equals(otherPerson.name)
                 && phone.equals(otherPerson.phone)
                 && email.equals(otherPerson.email)
-                && address.equals(otherPerson.address)
+                && company.equals(otherPerson.company)
+                && position.equals(otherPerson.position)
                 && tags.equals(otherPerson.tags);
     }
 
     @Override
     public int hashCode() {
         // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(name, email, phone, company, position, tags);
     }
 
     @Override
@@ -109,9 +121,12 @@ public class Person {
                 .add("name", name)
                 .add("phone", phone)
                 .add("email", email)
-                .add("address", address)
+//                .add("address", address)
+                .add("company", company)
+                .add("position", position)
                 .add("tags", tags)
                 .toString();
     }
+
 
 }

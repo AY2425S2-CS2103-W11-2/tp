@@ -335,6 +335,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case 2: Delete a person**
 
+**MSS**
+1.  User enters the command to delete a contact into the input field, along with the index of the specified contact
+2.  AddressBook shows a success message containing the name of the deleted contact
+
+   Use case ends.
+
+**Extensions**
+* 1a. AddressBook detects invalid index number 
+    * 1a1. AddressBook shows an error message
+      Use case ends.
+
+* 1b. AddressBook detects index does not exist
+    * 1b1. AddressBook shows an error message
+      Use case ends.  
+
 
 **Use case 3: View all contacts**
 

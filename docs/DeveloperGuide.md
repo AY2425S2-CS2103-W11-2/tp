@@ -300,12 +300,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 2a. The name of the contact provided is an exact (case-insensitive) duplicate of a name already in the contact list
-   * 2a1. AddressBook shows an error message.
+* 1a. The name of the contact provided is an exact (case-insensitive) duplicate of a name already in the contact list
+   * 1a1. AddressBook shows an error message.
    Use case ends.
 
-* 3a. The name, email and/or phone number of the contact provided is invalid 
-   * 3a1. AddressBook shows an error message.
+* 1b. The name, email and/or phone number of the contact provided is invalid 
+   * 1bAddressBook shows an error message.
    Use case ends.
 
 

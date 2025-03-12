@@ -340,7 +340,24 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **Use case 4: Search for Specific Contact by Name**
+**MSS**
+1. User requests to search for contact by name
+2. AddressBook shows the results of the search
 
+   Use Case ends.
+
+**Extensions**
+* 1a. AddressBook detects invalid or empty name input
+    * 1a1. AddressBook shows an error message
+    * 1a2. Addressbook requests user to re-enter a valid name
+
+      Use case resumes at step 1.
+
+* 2a. No contact matches the entered name
+    * 2a1. AddressBook shows an empty list
+    * 2a2. AddressBook shows message that indicates no results found
+
+      Use Case ends.
 
 **MSS**
 

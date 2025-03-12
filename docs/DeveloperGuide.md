@@ -289,7 +289,27 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 (For all use cases below, the **System** is the `AddressBook` and the **Actor** is the `user`, unless specified otherwise)
 
-**Use case: Delete a person**
+**Use case 1: Add a new contact**
+
+**MSS**
+
+1.  User enters the command to add a contact into the input field, along with all details following the specified command syntax
+2.  AddressBook shows a success message containing the details of the added contact
+
+    Use case ends.
+
+**Extensions**
+
+* 2a. The name of the contact provided is an exact (case-insensitive) duplicate of a name already in the contact list
+   * 2a1. AddressBook shows an error message.
+   Use case ends.
+
+* 3a. The name, email and/or phone number of the contact provided is invalid 
+   * 3a1. AddressBook shows an error message.
+   Use case ends.
+
+
+**Use case 2: Delete a person**
 
 **MSS**
 
@@ -319,6 +339,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 1.  Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
 2.  Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4.  After entering a command, a user should be able to see a visible response message within 1 second
 
 *{More to be added}*
 
@@ -326,6 +347,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Private contact detail**: A contact detail that is not meant to be shared with others
+* **Meeting**: Any interaction (past or upcoming) between the user and the contact 
 
 --------------------------------------------------------------------------------------------------------------------
 

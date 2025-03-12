@@ -276,14 +276,38 @@ _{Explain here how the data archiving feature will be implemented}_
 
 Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unlikely to have) - `*`
 
-| Priority | As a …​                                    | I want to …​                          | So that I can…​                                         |
-| -------- |--------------------------------------------|---------------------------------------|---------------------------------------------------------|
-| `* * *`  | User                                       | add a new contact                     | record a new contact in my network                      |
-| `* * *`  | User                                       | delete a contact                      | remove a contact from my network                        |
-| `* * *`  | User                                       | view all contacts                     | view all the contacts in my network                     |
-| `* * *`  | User                                       | search for a specific contact by name | look for a contact by their name                        |
-
-*{More to be added}*
+| Priority | As a …​         | I want to …​                                    | So that I can…​                                             |
+|----------|-----------------|-------------------------------------------------|-------------------------------------------------------------|
+| `* * *`  | First-Time User | view the available commands and their format    | learn how to send commands                                  |
+| `* * *`  | User            | add a new contact                               | record a new contact in my network                          |
+| `* * *`  | User            | delete a contact                                | remove a contact from my network                            |
+| `* * *`  | User            | view all contacts                               | view all the contacts in my network                         |
+| `* * *`  | User            | search for a specific contact by name           | look for a contact by their name                            |
+| `* * *`  | User            | view an individual contact                      | view an individual contact in my network                    |
+| `* * *`  | User            | sort my contacts by their importance            | view the contacts I'm most interested in contacting         |
+| `* * *`  | User            | filter my contacts by hiring tag                | view my contacts currently looking for interns              |
+| `* * *`  | User            | assign a hiring tag to a specific contact       | indicate whether they are open to hiring                    |
+| `* * *`  | User            | view list of all meetings                       | keep track of all my meetings                               |
+| `* * *`  | User            | create a meeting item                           | record down an upcoming/occured meeting                     |
+| `* * *`  | User            | delete a meeting item                           | cancel a meeting                                            |
+| `* * *`  | User            | update a meeting item                           | change details of a meeting                                 |
+| `* *`    | User            | edit a contact                                  | edit the details of a contact in my network                 |
+| `* *`    | User            | view number of contacts                         | view the size of my network                                 |
+| `* *`    | User            | sort my contacts by name in alphabetical order  | view the contacts in my network in alphabetical order       |
+| `* *`    | User            | sort my contacts by ascending/descending order  | view the contact list in reverse order                      |
+| `* *`    | User            | search for a specific contact by company        | look for a contact by their company                         |
+| `* *`    | User            | assign an importance tag for a specific contact | indicate their importance or relevance to me                |
+| `* *`    | User            | record when my next meeting with them is        | keep track of future meeting date/time                      |
+| `* *`    | User            | record where my next meeting with them is       | keep track of future meeting locations                      |
+| `* *`    | User            | record notes about my meeting                   | keep track of what was mentioned during the meeting         |
+| `* *`    | User            | view list of all previous meetings              | review all my past meetings                                 |
+| `* *`    | User            | view list of all upcoming meetings              | keep track of any upcoming meetings                         |
+| `* *`    | User            | add a contact to my meeting item                | keep track of who I meet during the meeting                 |
+| `*`      | User            | sort my contacts by last meeting                | view contacts that I have recently met with                 |
+| `*`      | User            | filter my contacts by their tags                | view contacts relevant to my current interest               |
+| `*`      | User            | assign an industry tag to a specific contact    | create a custom tag with their industry                     |
+| `*`      | User            | record when I last met my contact               | update the last-seen status if meeting with contact again   |
+| `*`      | User            | record where I last met my contact              | update the last-seen location if meeting with contact again |
 
 ### Use cases
 
@@ -310,6 +334,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **Use case 2: Delete a person**
+
+
+**Use case 3: View all contacts**
+
+
+**Use case 4: Search for Specific Contact by Name**
+
 
 **MSS**
 

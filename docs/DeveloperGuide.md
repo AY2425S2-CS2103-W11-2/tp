@@ -404,11 +404,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  After entering a command, a user should be able to see a visible response message within 1 second
 5.  Should return search results for a network size of up to 100,000 within 1 second
+7.  Startup time should not exceed 2 seconds on a typical modern system
 
 *{More to be added}*
 
 ### Glossary
 
+* **Contact**: An individual or entity whose details are stored in the application
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Network**: Group of individuals connected through professional or personal relationships
 * **Private contact detail**: A contact detail that is not meant to be shared with others

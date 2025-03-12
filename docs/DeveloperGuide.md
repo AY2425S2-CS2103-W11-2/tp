@@ -335,6 +335,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case 2: Delete a person**
 
+
+**Use case 3: View all contacts**
+
+
+**Use case 4: Search for Specific Contact by Name**
+
+
 **MSS**
 
 1.  User requests to list persons

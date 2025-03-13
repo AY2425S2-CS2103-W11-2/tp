@@ -11,10 +11,10 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Company;
-import seedu.address.model.person.Position;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
+import seedu.address.model.person.Position;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -83,7 +83,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses a {@code String company into an {@code Company}.
+     * Parses a {@code String company} into an {@code Company}.
      * Leading and trailing whitespaces will be trimmed.
      *
      * @throws ParseException if the given {@code company} is invalid.

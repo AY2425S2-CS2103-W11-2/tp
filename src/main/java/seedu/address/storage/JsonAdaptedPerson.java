@@ -10,7 +10,12 @@ import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import seedu.address.commons.exceptions.IllegalValueException;
-import seedu.address.model.person.*;
+import seedu.address.model.person.Company;
+import seedu.address.model.person.Email;
+import seedu.address.model.person.Name;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.Phone;
+import seedu.address.model.person.Position;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -33,7 +38,8 @@ class JsonAdaptedPerson {
     @JsonCreator
     public JsonAdaptedPerson(@JsonProperty("name") String name, @JsonProperty("email") String email,
                              @JsonProperty("phone") String phone, @JsonProperty("company") String company,
-                             @JsonProperty("position") String position, @JsonProperty("tags") List<JsonAdaptedTag> tags) {
+                             @JsonProperty("position") String position,
+                             @JsonProperty("tags") List<JsonAdaptedTag> tags) {
         this.name = name;
         this.phone = phone;
         this.email = email;
@@ -103,7 +109,8 @@ class JsonAdaptedPerson {
         final Company modelCompany = new Company(company);
 
         if (position == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Position.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Position.class.getSimpleName()));
         }
         if (!Position.isValidPosition(position)) {
             throw new IllegalValueException(Position.MESSAGE_CONSTRAINTS);

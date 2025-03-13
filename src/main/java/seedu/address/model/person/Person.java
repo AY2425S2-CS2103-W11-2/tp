@@ -22,7 +22,6 @@ public class Person {
     private final Email email;
 
     // Data fields
-//    private final Address address;
     private final Company company;
     private final Position position;
     private final Set<Tag> tags = new HashSet<>();
@@ -36,7 +35,6 @@ public class Person {
         this.name = name;
         this.phone = phone;
         this.email = email;
-//        this.address = address;
         this.company = company;
         this.position = position;
         this.tags.addAll(tags);
@@ -54,11 +52,9 @@ public class Person {
         return email;
     }
 
-//    public Address getAddress() {
-//        return address;
-//    }
-
-    public Company getCompany() { return company; }
+    public Company getCompany() {
+        return company;
+    }
 
     public Position getPosition() {
         return position;
@@ -121,7 +117,6 @@ public class Person {
                 .add("name", name)
                 .add("phone", phone)
                 .add("email", email)
-//                .add("address", address)
                 .add("company", company)
                 .add("position", position)
                 .add("tags", tags)

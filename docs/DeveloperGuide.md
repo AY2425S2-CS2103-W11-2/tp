@@ -335,6 +335,21 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Use case 2: Delete a person**
 
+**MSS**
+1.  User enters the command to delete a contact into the input field, along with the index of the specified contact
+2.  AddressBook shows a success message containing the name of the deleted contact
+
+   Use case ends.
+
+**Extensions**
+* 1a. AddressBook detects invalid index number 
+    * 1a1. AddressBook shows an error message
+      Use case ends.
+
+* 1b. AddressBook detects index does not exist
+    * 1b1. AddressBook shows an error message
+      Use case ends.  
+
 
 **Use case 3: View all contacts**
 
@@ -389,11 +404,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 3.  A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4.  After entering a command, a user should be able to see a visible response message within 1 second
 5.  Should return search results for a network size of up to 100,000 within 1 second
+7.  Startup time should not exceed 2 seconds on a typical modern system
 
 *{More to be added}*
 
 ### Glossary
 
+* **Contact**: An individual or entity whose details are stored in the application
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Network**: Group of individuals connected through professional or personal relationships
 * **Private contact detail**: A contact detail that is not meant to be shared with others

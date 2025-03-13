@@ -28,6 +28,10 @@ public class FindCommand extends Command {
         this.predicate = new PersonContainsKeywordsPredicate(nameKeyWords, companyKeyWords);
     }
 
+    public PersonContainsKeywordsPredicate getPredicate() {
+        return predicate;
+    }
+
     @Override
     public CommandResult execute(Model model) {
         requireNonNull(model);

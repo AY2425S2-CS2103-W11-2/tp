@@ -12,6 +12,7 @@ import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -29,19 +30,19 @@ public class FindCommandTest {
 
     @Test
     public void equals() {
-        PersonContainsKeywordsPredicate firstPredicate =
-                new PersonContainsKeywordsPredicate(Collections.singletonList("first"));
-        PersonContainsKeywordsPredicate secondPredicate =
-                new PersonContainsKeywordsPredicate(Collections.singletonList("second"));
+//        PersonContainsKeywordsPredicate firstPredicate =
+//                new PersonContainsKeywordsPredicate(Collections.singletonList("first"), Collections.emptyList());
+//        PersonContainsKeywordsPredicate secondPredicate =
+//                new PersonContainsKeywordsPredicate(Collections.singletonList("second"), Collections.emptyList());
 
-        FindCommand findFirstCommand = new FindCommand(firstPredicate);
-        FindCommand findSecondCommand = new FindCommand(secondPredicate);
+        FindCommand findFirstCommand = new FindCommand(Collections.singletonList("first"), Collections.emptyList());
+        FindCommand findSecondCommand = new FindCommand(Collections.singletonList("second"), Collections.emptyList());
 
         // same object -> returns true
         assertTrue(findFirstCommand.equals(findFirstCommand));
 
         // same values -> returns true
-        FindCommand findFirstCommandCopy = new FindCommand(firstPredicate);
+        FindCommand findFirstCommandCopy = new FindCommand(Collections.singletonList("first"), Collections.emptyList());
         assertTrue(findFirstCommand.equals(findFirstCommandCopy));
 
         // different types -> returns false
@@ -57,9 +58,8 @@ public class FindCommandTest {
     @Test
     public void execute_zeroKeywords_noPersonFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 0);
-        PersonContainsKeywordsPredicate predicate = preparePredicate(" ");
-        FindCommand command = new FindCommand(predicate);
-        expectedModel.updateFilteredPersonList(predicate);
+        FindCommand command = prepareFindCommand("");
+        expectedModel.updateFilteredPersonList(command.getPredicate());
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Collections.emptyList(), model.getFilteredPersonList());
     }
@@ -67,25 +67,39 @@ public class FindCommandTest {
     @Test
     public void execute_multipleKeywords_multiplePersonsFound() {
         String expectedMessage = String.format(MESSAGE_PERSONS_LISTED_OVERVIEW, 3);
-        PersonContainsKeywordsPredicate predicate = preparePredicate("Kurz Elle Kunz");
-        FindCommand command = new FindCommand(predicate);
-        expectedModel.updateFilteredPersonList(predicate);
+        FindCommand command = prepareFindCommand("Kurz Elle Kunz");
+        expectedModel.updateFilteredPersonList(command.getPredicate());
         assertCommandSuccess(command, model, expectedMessage, expectedModel);
         assertEquals(Arrays.asList(CARL, ELLE, FIONA), model.getFilteredPersonList());
     }
 
     @Test
     public void toStringMethod() {
-        PersonContainsKeywordsPredicate predicate = new PersonContainsKeywordsPredicate(Arrays.asList("keyword"));
-        FindCommand findCommand = new FindCommand(predicate);
-        String expected = FindCommand.class.getCanonicalName() + "{predicate=" + predicate + "}";
+        FindCommand findCommand = new FindCommand(List.of("keyword"), List.of());
+        String expected = FindCommand.class.getCanonicalName() + "{predicate=" + findCommand.getPredicate() + "}";
         assertEquals(expected, findCommand.toString());
     }
 
+//    /**
+//     * Parses {@code userInput} into a {@code PersonContainsKeywordsPredicate}.
+//     */
+//    private PersonContainsKeywordsPredicate preparePredicate(String userInput) {
+//        return new PersonContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
+//    }
+
     /**
-     * Parses {@code userInput} into a {@code PersonContainsKeywordsPredicate}.
-     */
-    private PersonContainsKeywordsPredicate preparePredicate(String userInput) {
-        return new PersonContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
+     * Parses {@code userInput} into a {@code FindCommand}.
+     * */
+    private FindCommand prepareFindCommand(String userInput) {
+        List<String> nameKeywords = List.of();
+        List<String> companyKeywords = List.of();
+
+        if (userInput.startsWith("/company")) {
+            companyKeywords = Arrays.asList(userInput.replace("/company", "").trim().split("\\s+"));
+        } else {
+            nameKeywords = Arrays.asList(userInput.split("\\s+"));
+        }
+
+        return new FindCommand(nameKeywords, companyKeywords);
     }
 }

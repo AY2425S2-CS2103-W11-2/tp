@@ -13,6 +13,15 @@ public class PersonContainsKeywordsPredicate implements Predicate<Person> {
     private final List<String> nameKeywords;
     private final List<String> companyKeywords;
 
+    /**
+     * Constructs a {@code PersonContainsKeywordsPredicate} with the specified name and company keywords.
+     * The predicate will match a {@code Person} if either the person's name contains any of the specified
+     * name keywords or if the person's company contains any of the specified company keywords.
+     * Both name and company searches are case-insensitive.
+     *
+     * @param keywords a list of name keywords to search for in a person's name
+     * @param companyKeywords a list of company keywords to search for in a person's company name
+     */
     public PersonContainsKeywordsPredicate(List<String> keywords, List<String> companyKeywords) {
         this.nameKeywords = keywords;
         this.companyKeywords = companyKeywords;
@@ -21,7 +30,7 @@ public class PersonContainsKeywordsPredicate implements Predicate<Person> {
     @Override
     public boolean test(Person person) {
     //        return nameKeywords.stream()
-    //                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+        //            .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
         boolean matchesName = nameKeywords.isEmpty() || nameKeywords.stream()
                 .anyMatch(keyword -> StringUtil.containsIgnoreCase(person.getName().fullName, keyword));
 

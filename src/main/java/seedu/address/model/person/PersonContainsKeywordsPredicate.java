@@ -10,16 +10,23 @@ import seedu.address.commons.util.ToStringBuilder;
  * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
  */
 public class PersonContainsKeywordsPredicate implements Predicate<Person> {
-    private final List<String> keywords;
+    private final List<String> nameKeywords;
+    private final List<String> companyKeywords;
 
-    public PersonContainsKeywordsPredicate(List<String> keywords) {
-        this.keywords = keywords;
+    public PersonContainsKeywordsPredicate(List<String> keywords, List<String> companyKeywords) {
+        this.nameKeywords = keywords;
+        this.companyKeywords = companyKeywords;
     }
 
     @Override
     public boolean test(Person person) {
-        return keywords.stream()
-                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+//        return nameKeywords.stream()
+//                .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
+        boolean matchesName = nameKeywords.isEmpty() || nameKeywords.stream()
+                .anyMatch(keyword -> StringUtil.containsIgnoreCase(person.getName().fullName, keyword));
+
+        //TODO Add the Company Boolean Value once PR is merged
+        return matchesName;
     }
 
     @Override
@@ -34,11 +41,11 @@ public class PersonContainsKeywordsPredicate implements Predicate<Person> {
         }
 
         PersonContainsKeywordsPredicate otherPersonContainsKeywordsPredicate = (PersonContainsKeywordsPredicate) other;
-        return keywords.equals(otherPersonContainsKeywordsPredicate.keywords);
+        return nameKeywords.equals(otherPersonContainsKeywordsPredicate.nameKeywords);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("keywords", keywords).toString();
+        return new ToStringBuilder(this).add("keywords", nameKeywords).toString();
     }
 }

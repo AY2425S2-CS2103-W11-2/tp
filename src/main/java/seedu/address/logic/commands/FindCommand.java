@@ -7,6 +7,8 @@ import seedu.address.logic.Messages;
 import seedu.address.model.Model;
 import seedu.address.model.person.PersonContainsKeywordsPredicate;
 
+import java.util.List;
+
 /**
  * Finds and lists all persons in address book whose name contains any of the argument keywords.
  * Keyword matching is case insensitive.
@@ -22,8 +24,8 @@ public class FindCommand extends Command {
 
     private final PersonContainsKeywordsPredicate predicate;
 
-    public FindCommand(PersonContainsKeywordsPredicate predicate) {
-        this.predicate = predicate;
+    public FindCommand(List<String> nameKeyWords, List<String> companyKeyWords) {
+        this.predicate = new PersonContainsKeywordsPredicate(nameKeyWords, companyKeyWords);
     }
 
     @Override

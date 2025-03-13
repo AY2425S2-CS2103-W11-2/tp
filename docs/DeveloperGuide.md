@@ -414,6 +414,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 4.  After entering a command, a user should be able to see a visible response message within 1 second
 5.  Should return search results for a network size of up to 100,000 within 1 second
 7.  Startup time should not exceed 2 seconds on a typical modern system
+8. The system should gracefully handle and log errors without crashing
 
 *{More to be added}*
 

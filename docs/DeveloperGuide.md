@@ -352,14 +352,23 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 
 **Use case 3: View all contacts**
+1. User enters command to view all contacts
+2. AddressBook shows all contacts that have been previously added by the user
 
+    Use case ends.
+
+**Extensions**
+* 2. Number of contacts exceeds the maximum number of contacts to be displayed
+   * 2a1. AddressBook uses pagination to display contacts by batches
+     Use case ends.
 
 **Use case 4: Search for Specific Contact by Name**
+
 **MSS**
 1. User requests to search for contact by name
 2. AddressBook shows the results of the search
 
-   Use Case ends.
+   Use case ends.
 
 **Extensions**
 * 1a. AddressBook detects invalid or empty name input
@@ -372,7 +381,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     * 2a1. AddressBook shows an empty list
     * 2a2. AddressBook shows message that indicates no results found
 
-      Use Case ends.
+      Use case ends.
 
 **MSS**
 
@@ -405,6 +414,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 4.  After entering a command, a user should be able to see a visible response message within 1 second
 5.  Should return search results for a network size of up to 100,000 within 1 second
 7.  Startup time should not exceed 2 seconds on a typical modern system
+8. The system should gracefully handle and log errors without crashing
 
 *{More to be added}*
 

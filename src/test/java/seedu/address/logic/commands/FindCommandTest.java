@@ -19,7 +19,6 @@ import org.junit.jupiter.api.Test;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
-import seedu.address.model.person.PersonContainsKeywordsPredicate;
 
 /**
  * Contains integration tests (interaction with the Model) for {@code FindCommand}.
@@ -30,11 +29,6 @@ public class FindCommandTest {
 
     @Test
     public void equals() {
-//        PersonContainsKeywordsPredicate firstPredicate =
-//                new PersonContainsKeywordsPredicate(Collections.singletonList("first"), Collections.emptyList());
-//        PersonContainsKeywordsPredicate secondPredicate =
-//                new PersonContainsKeywordsPredicate(Collections.singletonList("second"), Collections.emptyList());
-
         FindCommand findFirstCommand = new FindCommand(Collections.singletonList("first"), Collections.emptyList());
         FindCommand findSecondCommand = new FindCommand(Collections.singletonList("second"), Collections.emptyList());
 
@@ -79,13 +73,6 @@ public class FindCommandTest {
         String expected = FindCommand.class.getCanonicalName() + "{predicate=" + findCommand.getPredicate() + "}";
         assertEquals(expected, findCommand.toString());
     }
-
-//    /**
-//     * Parses {@code userInput} into a {@code PersonContainsKeywordsPredicate}.
-//     */
-//    private PersonContainsKeywordsPredicate preparePredicate(String userInput) {
-//        return new PersonContainsKeywordsPredicate(Arrays.asList(userInput.split("\\s+")));
-//    }
 
     /**
      * Parses {@code userInput} into a {@code FindCommand}.

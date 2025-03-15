@@ -60,6 +60,8 @@ public class AddCommandParser implements Parser<AddCommand> {
      * {@code ArgumentMultimap}.
      */
     private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        Stream.of(prefixes).forEach(prefix ->
+                System.out.println(prefix + String.valueOf(argumentMultimap.getValue(prefix).isPresent())));
         return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 

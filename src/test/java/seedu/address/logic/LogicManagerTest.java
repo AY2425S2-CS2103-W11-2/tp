@@ -179,7 +179,7 @@ public class LogicManagerTest {
         Person expectedPerson = new PersonBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         System.out.println(ArgumentTokenizer.tokenize(addCommand, PREFIX_NAME, PREFIX_EMAIL,
-                PREFIX_PHONE, PREFIX_COMPANY, PREFIX_POSITION, PREFIX_TAG));
+                PREFIX_PHONE, PREFIX_COMPANY, PREFIX_POSITION, PREFIX_TAG).toString());
         expectedModel.addPerson(expectedPerson);
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
     }

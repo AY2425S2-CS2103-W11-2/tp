@@ -62,6 +62,11 @@ public class ArgumentMultimap {
         return getValue(new Prefix("")).orElse("");
     }
 
+    @Override
+    public String toString() {
+        return argMultimap.toString();
+    }
+
     /**
      * Throws a {@code ParseException} if any of the prefixes given in {@code prefixes} appeared more than
      * once among the arguments.

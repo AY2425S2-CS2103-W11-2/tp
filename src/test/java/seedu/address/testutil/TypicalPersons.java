@@ -64,9 +64,8 @@ public class TypicalPersons {
             .withCompany(VALID_COMPANY_AMY).withPosition(VALID_POSITION_AMY)
             .withTags(VALID_TAG_FRIEND).build();
     public static final Person BOB = new PersonBuilder().withName(VALID_NAME_BOB).withPhone(VALID_PHONE_BOB)
-            .withEmail(VALID_EMAIL_BOB)
-            .withCompany(VALID_COMPANY_BOB).withPosition(VALID_POSITION_BOB)
-            .withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
+            .withEmail(VALID_EMAIL_BOB).withCompany(VALID_COMPANY_BOB)
+            .withPosition(VALID_POSITION_BOB).withTags(VALID_TAG_HUSBAND, VALID_TAG_FRIEND).build();
 
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER

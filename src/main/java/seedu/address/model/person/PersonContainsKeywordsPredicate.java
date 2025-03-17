@@ -34,8 +34,8 @@ public class PersonContainsKeywordsPredicate implements Predicate<Person> {
         //boolean matchesName = nameKeywords.isEmpty() || nameKeywords.stream()
         //          .anyMatch(keyword -> StringUtil.containsIgnoreCase(person.getName().fullName, keyword));
 
-        boolean matchesName = !nameKeyword.isEmpty() &&
-                StringUtil.containsIgnoreCase(person.getName().fullName, nameKeyword);
+        boolean matchesName = !nameKeyword.isEmpty()
+                && StringUtil.containsIgnoreCase(person.getName().fullName, nameKeyword);
 
         //TODO Add the Company Boolean Value once PR is merged
         return matchesName;

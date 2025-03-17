@@ -10,7 +10,7 @@ import seedu.address.commons.util.ToStringBuilder;
  * Tests that a {@code Person}'s {@code Name} matches any of the keywords given.
  */
 public class PersonContainsKeywordsPredicate implements Predicate<Person> {
-    private final List<String> nameKeywords;
+    private final String nameKeyword;
     private final List<String> companyKeywords;
 
     /**
@@ -22,8 +22,8 @@ public class PersonContainsKeywordsPredicate implements Predicate<Person> {
      * @param keywords a list of name keywords to search for in a person's name
      * @param companyKeywords a list of company keywords to search for in a person's company name
      */
-    public PersonContainsKeywordsPredicate(List<String> keywords, List<String> companyKeywords) {
-        this.nameKeywords = keywords;
+    public PersonContainsKeywordsPredicate(String keywords, List<String> companyKeywords) {
+        this.nameKeyword = keywords;
         this.companyKeywords = companyKeywords;
     }
 
@@ -31,8 +31,11 @@ public class PersonContainsKeywordsPredicate implements Predicate<Person> {
     public boolean test(Person person) {
         //      return nameKeywords.stream()
         //            .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
-        boolean matchesName = nameKeywords.isEmpty() || nameKeywords.stream()
-                .anyMatch(keyword -> StringUtil.containsIgnoreCase(person.getName().fullName, keyword));
+        //boolean matchesName = nameKeywords.isEmpty() || nameKeywords.stream()
+        //          .anyMatch(keyword -> StringUtil.containsIgnoreCase(person.getName().fullName, keyword));
+
+        boolean matchesName = !nameKeyword.isEmpty() &&
+                StringUtil.containsIgnoreCase(person.getName().fullName, nameKeyword);
 
         //TODO Add the Company Boolean Value once PR is merged
         return matchesName;
@@ -50,11 +53,11 @@ public class PersonContainsKeywordsPredicate implements Predicate<Person> {
         }
 
         PersonContainsKeywordsPredicate otherPersonContainsKeywordsPredicate = (PersonContainsKeywordsPredicate) other;
-        return nameKeywords.equals(otherPersonContainsKeywordsPredicate.nameKeywords);
+        return nameKeyword.equals(otherPersonContainsKeywordsPredicate.nameKeyword);
     }
 
     @Override
     public String toString() {
-        return new ToStringBuilder(this).add("keywords", nameKeywords).toString();
+        return new ToStringBuilder(this).add("keywords", nameKeyword).toString();
     }
 }

@@ -1,14 +1,22 @@
 package seedu.address.ui;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.logging.Logger;
+import java.util.regex.*;
+import java.util.Scanner;
 
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
+
+import com.sandec.mdfx.MarkdownView;
 
 /**
  * Controller for a help page
@@ -27,7 +35,7 @@ public class HelpWindow extends UiPart<Stage> {
     private Button copyButton;
 
     @FXML
-    private Label helpMessage;
+    private ScrollPane scrollPane;
 
     /**
      * Creates a new HelpWindow.
@@ -36,7 +44,47 @@ public class HelpWindow extends UiPart<Stage> {
      */
     public HelpWindow(Stage root) {
         super(FXML, root);
-        helpMessage.setText(HELP_MESSAGE);
+
+        System.out.println(System.getProperty("user.dir"));
+        File file = new File(System.getProperty("user.dir") + "/docs/UserGuide.md");
+        Scanner sc = null;
+        try {
+            sc = new Scanner(file);
+        } catch (FileNotFoundException e) {
+            System.out.println("User guide has moved??");
+        }
+        String line = "";
+        String output = "";
+        boolean inHelpSection = false;
+        Pattern p = Pattern.compile("!?\\[.*?\\]\\((.*?)\\)");
+        while (sc.hasNextLine()) {
+            line = sc.nextLine();
+            // check
+            if (line.contains("## Features")) {
+                // this is a start of command section
+                inHelpSection = true;
+            }
+            if (line.contains("## Usage information")) {
+                // this is the next section header
+                break;
+            }
+            if (inHelpSection) {
+                // check if the line contains an image embed
+                if (!p.matcher(line).find()) {
+                    
+                    // add the line to the output
+                    System.out.println(line);
+                    output += line + "\n";
+                }
+                
+            }
+        }
+
+        MarkdownView mdfx = new MarkdownView(output);
+        mdfx.prefWidthProperty().bind(scrollPane.widthProperty());
+        mdfx.prefHeightProperty().bind(scrollPane.heightProperty());
+        mdfx.setStyle("-fx-background-color: white; -fx-padding: 10px;");
+        scrollPane.setContent(mdfx);
     }
 
     /**

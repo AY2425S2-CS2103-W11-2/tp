@@ -71,12 +71,10 @@ public class HelpWindow extends UiPart<Stage> {
             if (inHelpSection) {
                 // check if the line contains an image embed
                 if (!p.matcher(line).find()) {
-                    
                     // add the line to the output
                     System.out.println(line);
                     output += line + "\n";
                 }
-                
             }
         }
 

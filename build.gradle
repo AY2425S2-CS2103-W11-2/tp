@@ -14,7 +14,6 @@ targetCompatibility = JavaVersion.VERSION_17
 repositories {
     mavenCentral()
     maven { url 'https://oss.sonatype.org/content/repositories/snapshots/' }
-    maven { url 'https://sandec.jfrog.io/artifactory/repo' }
 }
 
 checkstyle {
@@ -61,13 +60,9 @@ dependencies {
     implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.7.0'
     implementation group: 'com.fasterxml.jackson.datatype', name: 'jackson-datatype-jsr310', version: '2.7.4'
 
-    implementation "com.sandec:mdfx:0.2.12"
-
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: jUnitVersion
 
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: jUnitVersion
-
-
 }
 
 shadowJar {

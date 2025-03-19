@@ -25,8 +25,8 @@ public class FindCommand extends Command {
 
     private final PersonContainsKeywordsPredicate predicate;
 
-    public FindCommand(List<String> nameKeyWords, List<String> companyKeyWords) {
-        this.predicate = new PersonContainsKeywordsPredicate(nameKeyWords, companyKeyWords);
+    public FindCommand(String nameKeyWord, List<String> companyKeyWords) {
+        this.predicate = new PersonContainsKeywordsPredicate(nameKeyWord, companyKeyWords);
     }
 
     public PersonContainsKeywordsPredicate getPredicate() {

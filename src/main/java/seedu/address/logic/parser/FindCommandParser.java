@@ -25,7 +25,7 @@ public class FindCommandParser implements Parser<FindCommand> {
                     String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        List<String> nameKeywords = new ArrayList<>();
+        StringBuilder nameKeyword = new StringBuilder();
         List<String> companyKeywords = new ArrayList<>();
 
         //Split The Input By Spaces
@@ -39,12 +39,13 @@ public class FindCommandParser implements Parser<FindCommand> {
                 if (isCompanyMode) {
                     companyKeywords.add(token);
                 } else {
-                    nameKeywords.add(token);
+                    nameKeyword.append(token);
+                    nameKeyword.append(" ");
                 }
             }
         }
 
-        return new FindCommand(nameKeywords, companyKeywords);
+        return new FindCommand(nameKeyword.toString().trim(), companyKeywords);
     }
 
 }

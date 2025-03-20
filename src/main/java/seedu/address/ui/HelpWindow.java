@@ -33,7 +33,7 @@ public class HelpWindow extends UiPart<Stage> {
     private Button copyButton;
 
     @FXML
-    private Label helpMessage;
+    private ScrollPane scrollPane;
 
     /**
      * Creates a new HelpWindow.

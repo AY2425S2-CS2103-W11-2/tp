@@ -81,6 +81,7 @@ Format: `add n/NAME e/EMAIL p/PHONE_NUMBER c/COMPANY j/POSITION [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
+Special tags: hiring - indicates that the contact is open to hiring
 </div>
 
 Examples:

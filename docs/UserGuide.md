@@ -81,6 +81,7 @@ Format: `add n/NAME e/EMAIL p/PHONE_NUMBER c/COMPANY j/POSITION [t/TAG]…​`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
 A person can have any number of tags (including 0)
+Special tags: hiring - indicates that the contact is open to hiring
 </div>
 
 Examples:
@@ -128,6 +129,23 @@ Examples:
 * `find alex david` returns `Alex David`, `Alex Davidson`<br>
 <!-- TODO: Add the picture for the find command -->
 
+### Filtering persons by tags: `filter`
+
+Finds Contacts with tags containing the search term
+
+Format: `filter SEARCHTERM`
+
+* The search is case-insensitive. e.g `Friend` will match `friend`
+* Only the exact search term is searched. e.g. `Hiring Friend` will not match `Hiring`
+* Command will use Partial Search
+* Only contacts with tags matching with the full keyword will be returned.
+  e.g. `Fri` will return `Friend`, `Fridge` and not `Frail`, `Fragile`
+
+Examples:
+* `filter hiring` returns `John` and `John Doe` if John and John Doe both have `hiring` tags
+<!-- TODO: Add the picture for the filter command -->
+
+
 ### Deleting a person : `delete`
 
 Deletes the specified person from the address book.
@@ -153,9 +171,6 @@ Format: `clear`
 Exits the program.
 
 Format: `exit`
-
-
-## Usage information
 
 ### Saving the data
 

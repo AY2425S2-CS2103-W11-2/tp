@@ -10,11 +10,12 @@ import com.sandec.mdfx.MarkdownView;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ScrollPane;
+import javafx.scene.control.Label;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.stage.Stage;
 import seedu.address.commons.core.LogsCenter;
+
 /**
  * Controller for a help page
  */
@@ -32,7 +33,7 @@ public class HelpWindow extends UiPart<Stage> {
     private Button copyButton;
 
     @FXML
-    private ScrollPane scrollPane;
+    private Label helpMessage;
 
     /**
      * Creates a new HelpWindow.

@@ -370,18 +370,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
    Use case ends.
 
-**Extensions**
-* 1a. AddressBook detects invalid or empty name input
-    * 1a1. AddressBook shows an error message
-    * 1a2. Addressbook requests user to re-enter a valid name
+**Use case 5: View help for commands**
+1. User enters command or clicks the help tab to get help for command usage
+2. AddressBook opens a seperate window to display a snippet of the user guide
+    with the commands and their usages
 
-      Use case resumes at step 1.
-
-* 2a. No contact matches the entered name
-    * 2a1. AddressBook shows an empty list
-    * 2a2. AddressBook shows message that indicates no results found
-
-      Use case ends.
+    Use case ends.
 
 **MSS**
 

@@ -127,8 +127,9 @@ public class CommandTestUtil {
 
         Person person = model.getFilteredPersonList().get(targetIndex.getZeroBased());
         final String fullName = person.getName().fullName;
+        final String company = person.getCompany().toString();
         model.updateFilteredPersonList(new PersonContainsKeywordsPredicate(fullName,
-                Collections.emptyList()));
+                company));
 
         assertEquals(1, model.getFilteredPersonList().size());
     }

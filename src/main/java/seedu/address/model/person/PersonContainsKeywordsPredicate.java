@@ -11,7 +11,7 @@ import seedu.address.commons.util.ToStringBuilder;
  */
 public class PersonContainsKeywordsPredicate implements Predicate<Person> {
     private final String nameKeyword;
-    private final List<String> companyKeywords;
+    private final String companyKeyword;
 
     /**
      * Constructs a {@code PersonContainsKeywordsPredicate} with the specified name and company keywords.
@@ -20,25 +20,24 @@ public class PersonContainsKeywordsPredicate implements Predicate<Person> {
      * Both name and company searches are case-insensitive.
      *
      * @param keywords a list of name keywords to search for in a person's name
-     * @param companyKeywords a list of company keywords to search for in a person's company name
+     * @param companyKeyword a list of company keywords to search for in a person's company name
      */
-    public PersonContainsKeywordsPredicate(String keywords, List<String> companyKeywords) {
+    public PersonContainsKeywordsPredicate(String keywords, String companyKeyword) {
         this.nameKeyword = keywords;
-        this.companyKeywords = companyKeywords;
+        this.companyKeyword = companyKeyword;
     }
 
     @Override
     public boolean test(Person person) {
-        //      return nameKeywords.stream()
-        //            .anyMatch(keyword -> StringUtil.containsWordIgnoreCase(person.getName().fullName, keyword));
-        //boolean matchesName = nameKeywords.isEmpty() || nameKeywords.stream()
-        //          .anyMatch(keyword -> StringUtil.containsIgnoreCase(person.getName().fullName, keyword));
-
         boolean matchesName = !nameKeyword.isEmpty()
                 && StringUtil.containsIgnoreCase(person.getName().fullName, nameKeyword);
 
-        //TODO Add the Company Boolean Value once PR is merged
-        return matchesName;
+        if (companyKeyword.isEmpty()) {
+            return matchesName;
+        } else {
+            boolean matchesCompany = StringUtil.containsIgnoreCase(person.getCompany().toString(), companyKeyword);
+            return matchesName && matchesCompany;
+        }
     }
 
     @Override

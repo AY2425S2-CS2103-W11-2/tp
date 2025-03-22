@@ -50,7 +50,7 @@ public class TypicalAddressBook {
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com")
             .withCompany("Apple").withPosition("Hardware Engineer").build();
-    
+
     //meetings
     public static final Meeting MEETING1 = new MeetingBuilder().withMeetingTime("2025-12-30 14:00")
             .withPersons("Benson Meier", "Alice Pauline", "Daniel Meier").withNotes("Discuss about the new project").build();
@@ -62,7 +62,6 @@ public class TypicalAddressBook {
             .withPersons("Fiona Kunz", "George Best").withNotes("").build();
     public static final Meeting MEETING5 = new MeetingBuilder().withMeetingTime("2025-08-30 09:00")
             .withPersons("Fiona Kunz").withNotes("").build();
-        
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")

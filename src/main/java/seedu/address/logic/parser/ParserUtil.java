@@ -9,6 +9,7 @@ import java.util.Set;
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.meeting.MeetingTime;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Company;
 import seedu.address.model.person.Email;
@@ -143,7 +144,7 @@ public class ParserUtil {
     }
 
     /**
-     * Parses {@code Collection<String> tags} into a {@code Set<Tag>}.
+     * Parses {@code Collection<String> personList} into a {@code Set<String>}.
      */
     public static Set<Tag> parseTags(Collection<String> tags) throws ParseException {
         requireNonNull(tags);
@@ -152,5 +153,32 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String dateTime} into a {@code MeetingTime}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code dateTime} is invalid.
+     */
+    public static MeetingTime parseMeetingTime(String dateTime) throws ParseException {
+        requireNonNull(dateTime);
+        String trimmedDateTime = dateTime.trim();
+        if (!MeetingTime.isValidMeetingTime(trimmedDateTime)) {
+            throw new ParseException(MeetingTime.MESSAGE_CONSTRAINTS);
+        }
+        return new MeetingTime(trimmedDateTime);
+    }
+
+    /**
+     * Parses {@code Collection<String> personList} into a {@code Set<String>}.
+     */
+    public static Set<String> parsePersonList(Collection<String> personList) throws ParseException {
+        requireNonNull(personList);
+        final Set<String> personSet = new HashSet<>();
+        for (String personName : personList) {
+            personSet.add(personName.trim());
+        }
+        return personSet;
     }
 }

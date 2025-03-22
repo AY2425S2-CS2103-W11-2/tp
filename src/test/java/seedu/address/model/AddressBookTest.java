@@ -30,6 +30,7 @@ public class AddressBookTest {
     @Test
     public void constructor() {
         assertEquals(Collections.emptyList(), addressBook.getPersonList());
+        assertEquals(Collections.emptyList(), addressBook.getMeetingList());
     }
 
     @Test
@@ -86,7 +87,8 @@ public class AddressBookTest {
 
     @Test
     public void toStringMethod() {
-        String expected = AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getPersonList() + "}";
+        String expected = AddressBook.class.getCanonicalName() + "{persons=" + addressBook.getPersonList()
+                          + ", meetings=" + addressBook.getMeetingList() + "}";
         assertEquals(expected, addressBook.toString());
     }
 

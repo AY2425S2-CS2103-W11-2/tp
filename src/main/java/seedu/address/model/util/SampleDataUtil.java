@@ -13,6 +13,8 @@ import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Position;
 import seedu.address.model.tag.Tag;
+import seedu.address.model.meeting.Meeting;
+import seedu.address.model.meeting.MeetingTime;
 
 /**
  * Contains utility methods for populating {@code AddressBook} with sample data.
@@ -41,10 +43,24 @@ public class SampleDataUtil {
         };
     }
 
+    public static Meeting[] getSampleMeetings() {
+        return new Meeting[] {
+            new Meeting(new MeetingTime("2025-12-30 14:00"), getPersonSet("Bernice Yu", "Alex Yeoh", "David Li"),
+                        "Discuss about the new project"),
+            new Meeting(new MeetingTime("2025-12-15 15:20"), getPersonSet("David Li"),
+                        "Interview for summer internship"),
+            new Meeting(new MeetingTime("2025-02-13 10:00"), getPersonSet("David Li", "Roy Balakrishnan"),
+                        "Consultation at Singapore Coding Conference")
+        };
+    }
+
     public static ReadOnlyAddressBook getSampleAddressBook() {
         AddressBook sampleAb = new AddressBook();
         for (Person samplePerson : getSamplePersons()) {
             sampleAb.addPerson(samplePerson);
+        }
+        for (Meeting sampleMeeting : getSampleMeetings()) {
+            sampleAb.addMeeting(sampleMeeting, sampleAb.getPersonList());
         }
         return sampleAb;
     }
@@ -55,6 +71,14 @@ public class SampleDataUtil {
     public static Set<Tag> getTagSet(String... strings) {
         return Arrays.stream(strings)
                 .map(Tag::new)
+                .collect(Collectors.toSet());
+    }
+
+    /**
+     * Returns a person set containing the list of name strings given.
+     */
+    public static Set<String> getPersonSet(String... strings) {
+        return Arrays.stream(strings)
                 .collect(Collectors.toSet());
     }
 

@@ -6,10 +6,10 @@ import java.util.List;
 
 import javafx.collections.ObservableList;
 import seedu.address.commons.util.ToStringBuilder;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.meeting.Meeting;
 import seedu.address.model.meeting.UniqueMeetingList;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.UniquePersonList;
 
 /**
  * Wraps all data at the address-book level
@@ -29,7 +29,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      */
     {
         persons = new UniquePersonList();
-        meetings  = new UniqueMeetingList();
+        meetings = new UniqueMeetingList();
     }
 
     public AddressBook() {}
@@ -130,7 +130,8 @@ public class AddressBook implements ReadOnlyAddressBook {
     /**
      * Replaces the given meeting {@code target} in the list with {@code editedMeeting}.
      * {@code target} must exist in the address book.
-     * The meeting identity of {@code editedMeeting} must not be the same as another existing meeting in the address book.
+     * The meeting identity of {@code editedMeeting} must not be the same as
+     * another existing meeting in the address book.
      */
     public void setMeeting(Meeting target, Meeting editedMeeting, ObservableList<Person> persons) {
         requireNonNull(editedMeeting);

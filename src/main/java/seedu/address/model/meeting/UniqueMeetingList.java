@@ -8,10 +8,10 @@ import java.util.List;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.person.Person;
-import seedu.address.model.person.UniquePersonList;
 import seedu.address.model.meeting.exceptions.DuplicateMeetingException;
 import seedu.address.model.meeting.exceptions.MeetingNotFoundException;
+import seedu.address.model.person.Person;
+import seedu.address.model.person.UniquePersonList;
 
 /**
  * A list of meetings that enforces uniqueness between its elements and does not allow nulls.
@@ -52,7 +52,7 @@ public class UniqueMeetingList implements Iterable<Meeting> {
             // add custom exception here
             throw new IllegalArgumentException(exists);
         }
-        
+
         internalList.add(toAdd);
     }
 

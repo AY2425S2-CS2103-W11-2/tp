@@ -34,7 +34,7 @@ public class Meeting {
     public MeetingTime getDateTime() {
         return meetingTime;
     }
-    
+
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
      * if modification is attempted.

@@ -10,7 +10,6 @@ import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.meeting.Meeting;
-import seedu.address.model.meeting.MeetingTime;
 
 /**
  * Adds a person to the address book.
@@ -56,7 +55,7 @@ public class AddMeetingCommand extends Command {
         } catch (IllegalArgumentException e) {
             return new CommandResult(e.getMessage());
         }
-        
+
         return new CommandResult(String.format(MESSAGE_SUCCESS, Messages.format(toAdd)));
     }
 

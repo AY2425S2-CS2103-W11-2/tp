@@ -10,7 +10,8 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class MeetingTime {
 
     public static final String MESSAGE_CONSTRAINTS =
-            "Meeting times should only contain numeric characters, slashes, dashes, colons and spaces, and it should not be blank";
+            "Meeting times should only contain numeric characters, slashes, dashes, colons and spaces,"
+            + " and it should not be blank";
 
     /*
      * The first character of the address must not be a whitespace,

@@ -1,9 +1,7 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
-import java.util.ArrayList;
-import java.util.List;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
@@ -26,18 +24,19 @@ public class FindCommandParser implements Parser<FindCommand> {
         }
 
         StringBuilder nameKeyword = new StringBuilder();
-        List<String> companyKeywords = new ArrayList<>();
+        StringBuilder companyKeyword = new StringBuilder();
 
         //Split The Input By Spaces
         String[] tokens = trimmedArgs.split("\\s+");
         boolean isCompanyMode = false;
 
         for (String token : tokens) {
-            if (token.equalsIgnoreCase("/company")) {
+            if (token.equalsIgnoreCase(PREFIX_COMPANY.toString())) {
                 isCompanyMode = true;
             } else {
                 if (isCompanyMode) {
-                    companyKeywords.add(token);
+                    companyKeyword.append(token);
+                    companyKeyword.append(" ");
                 } else {
                     nameKeyword.append(token);
                     nameKeyword.append(" ");
@@ -45,7 +44,7 @@ public class FindCommandParser implements Parser<FindCommand> {
             }
         }
 
-        return new FindCommand(nameKeyword.toString().trim(), companyKeywords);
+        return new FindCommand(nameKeyword.toString().trim(), companyKeyword.toString().trim());
     }
 
 }

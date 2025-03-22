@@ -8,7 +8,6 @@ import static seedu.address.testutil.Assert.assertThrows;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_PERSON;
 
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -74,7 +73,7 @@ public class AddressBookParserTest {
         String keywordString = "foo bar baz";
         FindCommand command = (FindCommand) parser.parseCommand(
                 FindCommand.COMMAND_WORD + " " + keywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(keywordString, Collections.emptyList()), command);
+        assertEquals(new FindCommand(keywordString, ""), command);
     }
 
     @Test

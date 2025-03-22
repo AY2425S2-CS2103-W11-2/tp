@@ -18,12 +18,13 @@ import java.util.Arrays;
 import java.util.List;
 
 import seedu.address.model.AddressBook;
+import seedu.address.model.meeting.Meeting;
 import seedu.address.model.person.Person;
 
 /**
  * A utility class containing a list of {@code Person} objects to be used in tests.
  */
-public class TypicalPersons {
+public class TypicalAddressBook {
 
     public static final Person ALICE = new PersonBuilder().withName("Alice Pauline")
             .withEmail("alice@example.com").withPhone("94351253")
@@ -49,6 +50,19 @@ public class TypicalPersons {
     public static final Person GEORGE = new PersonBuilder().withName("George Best").withPhone("9482442")
             .withEmail("anna@example.com")
             .withCompany("Apple").withPosition("Hardware Engineer").build();
+    
+    //meetings
+    public static final Meeting MEETING1 = new MeetingBuilder().withMeetingTime("2025-12-30 14:00")
+            .withPersons("Benson Meier", "Alice Pauline", "Daniel Meier").withNotes("Discuss about the new project").build();
+    public static final Meeting MEETING2 = new MeetingBuilder().withMeetingTime("2025-12-15 15:20")
+            .withPersons("Daniel Meier").withNotes("Interview for summer internship").build();
+    public static final Meeting MEETING3 = new MeetingBuilder().withMeetingTime("2025-02-13 10:00")
+            .withPersons("Daniel Meier", "George Best").withNotes("Consultation at Singapore Coding Conference").build();
+    public static final Meeting MEETING4 = new MeetingBuilder().withMeetingTime("2025-08-21 09:00")
+            .withPersons("Fiona Kunz", "George Best").withNotes("").build();
+    public static final Meeting MEETING5 = new MeetingBuilder().withMeetingTime("2025-08-30 09:00")
+            .withPersons("Fiona Kunz").withNotes("").build();
+        
 
     // Manually added
     public static final Person HOON = new PersonBuilder().withName("Hoon Meier").withPhone("8482424")
@@ -70,7 +84,7 @@ public class TypicalPersons {
 
     public static final String KEYWORD_MATCHING_MEIER = "Meier"; // A keyword that matches MEIER
 
-    private TypicalPersons() {} // prevents instantiation
+    private TypicalAddressBook() {} // prevents instantiation
 
     /**
      * Returns an {@code AddressBook} with all the typical persons.
@@ -80,10 +94,16 @@ public class TypicalPersons {
         for (Person person : getTypicalPersons()) {
             ab.addPerson(person);
         }
+        for (Meeting meeting : getTypicalMeetings()) {
+            ab.addMeeting(meeting, ab.getPersonList());
+        }
         return ab;
     }
 
     public static List<Person> getTypicalPersons() {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
+    }
+    public static List<Meeting> getTypicalMeetings() {
+        return new ArrayList<>(Arrays.asList(MEETING1, MEETING2, MEETING3, MEETING4, MEETING5));
     }
 }

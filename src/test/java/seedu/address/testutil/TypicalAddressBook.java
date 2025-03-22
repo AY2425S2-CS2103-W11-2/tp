@@ -53,11 +53,13 @@ public class TypicalAddressBook {
 
     //meetings
     public static final Meeting MEETING1 = new MeetingBuilder().withMeetingTime("2025-12-30 14:00")
-            .withPersons("Benson Meier", "Alice Pauline", "Daniel Meier").withNotes("Discuss about the new project").build();
+            .withPersons("Benson Meier", "Alice Pauline", "Daniel Meier")
+            .withNotes("Discuss about the new project").build();
     public static final Meeting MEETING2 = new MeetingBuilder().withMeetingTime("2025-12-15 15:20")
             .withPersons("Daniel Meier").withNotes("Interview for summer internship").build();
     public static final Meeting MEETING3 = new MeetingBuilder().withMeetingTime("2025-02-13 10:00")
-            .withPersons("Daniel Meier", "George Best").withNotes("Consultation at Singapore Coding Conference").build();
+            .withPersons("Daniel Meier", "George Best")
+            .withNotes("Consultation at Singapore Coding Conference").build();
     public static final Meeting MEETING4 = new MeetingBuilder().withMeetingTime("2025-08-21 09:00")
             .withPersons("Fiona Kunz", "George Best").withNotes("").build();
     public static final Meeting MEETING5 = new MeetingBuilder().withMeetingTime("2025-08-30 09:00")

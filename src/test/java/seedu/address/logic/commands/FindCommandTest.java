@@ -7,9 +7,7 @@ import static seedu.address.logic.Messages.MESSAGE_PERSONS_LISTED_OVERVIEW;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
 
-import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import org.junit.jupiter.api.Test;
 
@@ -26,14 +24,14 @@ public class FindCommandTest {
 
     @Test
     public void equals() {
-        FindCommand findFirstCommand = new FindCommand("first", Collections.emptyList());
-        FindCommand findSecondCommand = new FindCommand("second", Collections.emptyList());
+        FindCommand findFirstCommand = new FindCommand("first", "");
+        FindCommand findSecondCommand = new FindCommand("second", "");
 
         // same object -> returns true
         assertTrue(findFirstCommand.equals(findFirstCommand));
 
         // same values -> returns true
-        FindCommand findFirstCommandCopy = new FindCommand("first", Collections.emptyList());
+        FindCommand findFirstCommandCopy = new FindCommand("first", "");
         assertTrue(findFirstCommand.equals(findFirstCommandCopy));
 
         // different types -> returns false
@@ -66,7 +64,7 @@ public class FindCommandTest {
 
     @Test
     public void toStringMethod() {
-        FindCommand findCommand = new FindCommand("keyword", List.of());
+        FindCommand findCommand = new FindCommand("keyword", "");
         String expected = FindCommand.class.getCanonicalName() + "{predicate=" + findCommand.getPredicate() + "}";
         assertEquals(expected, findCommand.toString());
     }
@@ -75,20 +73,10 @@ public class FindCommandTest {
      * Parses {@code userInput} into a {@code FindCommand}.
      * */
     private FindCommand prepareFindCommand(String userInput) {
-        //        String nameKeywords = "";
-        //        List<String> companyKeywords = List.of();
-        //
-        //        if (userInput.startsWith("/company")) {
-        //            companyKeywords = Arrays.asList(userInput.replace("/company", "").trim().split("\\s+"));
-        //        } else {
-        //            nameKeywords = Arrays.asList(userInput.split("\\s+"));
-        //        }
-        //
-        //        return new FindCommand(nameKeywords, companyKeywords);
         String trimmedArgs = userInput.trim();
 
         StringBuilder nameKeyword = new StringBuilder();
-        List<String> companyKeywords = new ArrayList<>();
+        StringBuilder companyKeyword = new StringBuilder();
 
         //Split The Input By Spaces
         String[] tokens = trimmedArgs.split("\\s+");
@@ -99,7 +87,8 @@ public class FindCommandTest {
                 isCompanyMode = true;
             } else {
                 if (isCompanyMode) {
-                    companyKeywords.add(token);
+                    companyKeyword.append(token);
+                    companyKeyword.append(" ");
                 } else {
                     nameKeyword.append(token);
                     nameKeyword.append(" ");
@@ -107,6 +96,6 @@ public class FindCommandTest {
             }
         }
 
-        return new FindCommand(nameKeyword.toString(), companyKeywords);
+        return new FindCommand(nameKeyword.toString().trim(), companyKeyword.toString().trim());
     }
 }

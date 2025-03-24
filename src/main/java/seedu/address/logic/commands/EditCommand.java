@@ -6,6 +6,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
 import java.util.Collections;
@@ -23,6 +24,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Company;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Importance;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -44,7 +46,8 @@ public class EditCommand extends Command {
             + "[" + PREFIX_PHONE + "PHONE] "
             + "[" + PREFIX_EMAIL + "EMAIL] "
             + "[" + PREFIX_ADDRESS + "ADDRESS] "
-            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "[" + PREFIX_TAG + "TAG]... "
+            + "[" + PREFIX_IMPORTANCE + "IMPORTANCE]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_PHONE + "91234567 "
             + PREFIX_EMAIL + "johndoe@example.com";
@@ -102,8 +105,10 @@ public class EditCommand extends Command {
         Company updatedCompany = editPersonDescriptor.getCompany().orElse(personToEdit.getCompany());
         Position updatedPosition = editPersonDescriptor.getPosition().orElse(personToEdit.getPosition());
         Set<Tag> updatedTags = editPersonDescriptor.getTags().orElse(personToEdit.getTags());
+        Importance updatedImportance = editPersonDescriptor.getImportance().orElse(personToEdit.getImportance());
 
-        return new Person(updatedName, updatedEmail, updatedPhone, updatedCompany, updatedPosition, updatedTags);
+        return new Person(updatedName, updatedEmail, updatedPhone, updatedCompany, updatedPosition, updatedTags,
+                updatedImportance);
     }
 
     @Override
@@ -141,6 +146,7 @@ public class EditCommand extends Command {
         private Company company;
         private Position position;
         private Set<Tag> tags;
+        private Importance importance;
 
         public EditPersonDescriptor() {}
 
@@ -155,13 +161,14 @@ public class EditCommand extends Command {
             setCompany(toCopy.company);
             setPosition(toCopy.position);
             setTags(toCopy.tags);
+            setImportance(toCopy.importance);
         }
 
         /**
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(name, phone, email, company, position, tags);
+            return CollectionUtil.isAnyNonNull(name, phone, email, company, position, tags, importance);
         }
 
         public void setName(Name name) {
@@ -204,6 +211,14 @@ public class EditCommand extends Command {
             return Optional.ofNullable(position);
         }
 
+        public void setImportance(Importance importance) {
+            this.importance = importance;
+        }
+
+        public Optional<Importance> getImportance() {
+            return Optional.ofNullable(importance);
+        }
+
         /**
          * Sets {@code tags} to this object's {@code tags}.
          * A defensive copy of {@code tags} is used internally.
@@ -238,7 +253,8 @@ public class EditCommand extends Command {
                     && Objects.equals(email, otherEditPersonDescriptor.email)
                     && Objects.equals(company, otherEditPersonDescriptor.company)
                     && Objects.equals(position, otherEditPersonDescriptor.position)
-                    && Objects.equals(tags, otherEditPersonDescriptor.tags);
+                    && Objects.equals(tags, otherEditPersonDescriptor.tags)
+                    && Objects.equals(importance, otherEditPersonDescriptor.importance);
         }
 
         @Override
@@ -250,6 +266,7 @@ public class EditCommand extends Command {
                     .add("company", company)
                     .add("position", position)
                     .add("tags", tags)
+                    .add("importance", importance)
                     .toString();
         }
     }

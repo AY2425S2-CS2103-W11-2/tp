@@ -25,12 +25,14 @@ public class Person {
     private final Company company;
     private final Position position;
     private final Set<Tag> tags = new HashSet<>();
+    private final Importance importance;
 
 
     /**
      * Every field must be present and not null.
      */
-    public Person(Name name, Email email, Phone phone, Company company, Position position, Set<Tag> tags) {
+    public Person(Name name, Email email, Phone phone, Company company, Position position, Set<Tag> tags,
+                  Importance importance) {
         requireAllNonNull(name, phone, email, company, position, tags);
         this.name = name;
         this.phone = phone;
@@ -38,6 +40,7 @@ public class Person {
         this.company = company;
         this.position = position;
         this.tags.addAll(tags);
+        this.importance = importance;
     }
 
     public Name getName() {
@@ -66,6 +69,10 @@ public class Person {
      */
     public Set<Tag> getTags() {
         return Collections.unmodifiableSet(tags);
+    }
+
+    public Importance getImportance() {
+        return importance;
     }
 
     /**
@@ -120,6 +127,7 @@ public class Person {
                 .add("company", company)
                 .add("position", position)
                 .add("tags", tags)
+                .add("importance", importance)
                 .toString();
     }
 

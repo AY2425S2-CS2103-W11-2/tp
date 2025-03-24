@@ -48,6 +48,8 @@ public class Messages {
                 .append(person.getPosition())
                 .append("; Tags: ");
         person.getTags().forEach(builder::append);
+        builder.append("; Importance: ")
+                .append(person.getImportance());
         return builder.toString();
     }
 

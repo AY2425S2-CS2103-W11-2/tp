@@ -1,15 +1,23 @@
 package seedu.address.logic.parser;
 
+import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+
+import java.util.Comparator;
+
 import seedu.address.logic.commands.SortCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.person.Person;
 
-import java.util.Comparator;
-
-import static seedu.address.logic.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
+/**
+ * Parses input arguments and creates a new SortCommand object
+ */
 public class SortCommandParser implements Parser<SortCommand> {
 
+    /**
+     * Parses the given {@code String} of arguments in the context of the SortCommand
+     * and returns a SortCommand object for execution.
+     * @throws ParseException if the user input does not conform the expected format
+     */
     @Override
     public SortCommand parse(String userInput) throws ParseException {
         String trimmedArgs = userInput.trim();
@@ -27,8 +35,8 @@ public class SortCommandParser implements Parser<SortCommand> {
         String order = splitArgs[1];
 
         Comparator<Person> comparator = switch (field) {
-            case "name" -> Comparator.comparing(Person::getName, Comparator.naturalOrder());
-            default -> throw new ParseException("Invalid field: " + field);
+        case "name" -> Comparator.comparing(Person::getName, Comparator.naturalOrder());
+        default -> throw new ParseException("Invalid field: " + field);
         };
 
         if ("desc".equalsIgnoreCase(order)) {

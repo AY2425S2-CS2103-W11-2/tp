@@ -2,14 +2,17 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import seedu.address.commons.util.ToStringBuilder;
+import java.util.Comparator;
+
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.person.Person;
 
 
-import java.util.Comparator;
-
+/**
+ * Sorts and lists all persons in address book depending on keyword given.
+ * Keyword matching is case-insensitive.
+ */
 public class SortCommand extends Command {
 
     public static final String COMMAND_WORD = "sort";
@@ -26,6 +29,13 @@ public class SortCommand extends Command {
     private final String order;
 
 
+    /**
+     * Constructs a {@code SortCommand} with the specified comparator, field, and order.
+     *
+     * @param comparator The comparator used to define the sorting order of the person list.
+     * @param field The field by which the list will be sorted (e.g., name, age).
+     * @param order The sorting order, typically "asc" for ascending or "desc" for descending.
+     */
     public SortCommand(Comparator<Person> comparator, String field, String order) {
         this.comparator = comparator;
         this.field = field;
@@ -47,4 +57,5 @@ public class SortCommand extends Command {
                 && field.equals(((SortCommand) other).field)
                 && order.equals(((SortCommand) other).order));
     }
+
 }

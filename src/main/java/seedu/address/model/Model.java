@@ -16,6 +16,10 @@ public interface Model {
     /** {@code Predicate} that always evaluate to true */
     Predicate<Person> PREDICATE_SHOW_ALL_PERSONS = unused -> true;
 
+    /** {@code Predicate} that always evaluate to true */
+    Predicate<Meeting> PREDICATE_SHOW_ALL_MEETINGS = unused -> true;
+
+
     /**
      * Replaces user prefs data with the data in {@code userPrefs}.
      */
@@ -109,6 +113,12 @@ public interface Model {
 
     /** Returns an unmodifiable view of the filtered meeting list */
     ObservableList<Meeting> getFilteredMeetingList();
+
+    /**
+     * Updates the filter of the filtered meetings list to filter by the given {@code predicate}.
+     * @throws NullPointerException if {@code predicate} is null.
+     */
+    void updateFilteredMeetingList(Predicate<Meeting> predicate);
 
     /**
      * Updates the filter of the filtered person list to filter by the given {@code predicate}.

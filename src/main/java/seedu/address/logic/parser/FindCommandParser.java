@@ -19,8 +19,10 @@ public class FindCommandParser implements Parser<FindCommand> {
     public FindCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_COMPANY);
 
-        String nameKeyword = argMultimap.getPreamble();
+        String nameKeyword = argMultimap.getPreamble().trim();
         String companyKeyword = argMultimap.getValue(PREFIX_COMPANY).orElse("");
+
+        nameKeyword = nameKeyword.replaceAll("\\s+", " ").trim();
 
         if (nameKeyword.isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));

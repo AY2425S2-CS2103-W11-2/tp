@@ -5,13 +5,15 @@
     "email": "alice@example.com",
     "company": "Google",
     "position": "Software Engineer",
-    "tags": [ "friends" ]
+    "tags": [ "friends" ],
+    "importance" : "High"
   }, {
     "name": "Alice Pauline",
     "phone": "94351253",
     "email": "pauline@example.com",
     "company": "Meta",
-    "position": "Software Designer"
+    "position": "Software Designer",
+    "importance" : "Medium"
   } ],
   "meetings": []
 }

@@ -158,8 +158,6 @@ public class UniqueMeetingList implements Iterable<Meeting> {
     private String personsExist(Meeting meeting, ObservableList<Person> persons) {
         // check if every person in the meeting is in the address book
         for (String p : meeting.getPersonList()) {
-            System.out.println(p);
-            System.out.println(persons);
             if (!persons.stream().anyMatch(person -> person.getName().toString().equals(p))) {
                 return "Person " + p + " is not in the address book.";
             }

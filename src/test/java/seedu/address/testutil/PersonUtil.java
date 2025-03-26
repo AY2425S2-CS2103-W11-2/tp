@@ -2,6 +2,7 @@ package seedu.address.testutil;
 
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POSITION;
@@ -39,6 +40,7 @@ public class PersonUtil {
         person.getTags().stream().forEach(
             s -> sb.append(PREFIX_TAG + s.tagName + " ")
         );
+        sb.append(PREFIX_IMPORTANCE + person.getImportance().value + " ");
         return sb.toString();
     }
 
@@ -60,6 +62,8 @@ public class PersonUtil {
                 tags.forEach(s -> sb.append(PREFIX_TAG).append(s.tagName).append(" "));
             }
         }
+        descriptor.getImportance().ifPresent(importance -> sb.append(PREFIX_IMPORTANCE)
+                .append(importance.value).append(" "));
         return sb.toString();
     }
 }

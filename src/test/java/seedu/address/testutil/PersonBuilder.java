@@ -5,12 +5,14 @@ import java.util.Set;
 
 import seedu.address.model.person.Company;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Importance;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Position;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
+
 
 /**
  * A utility class to help with building Person objects.
@@ -22,6 +24,7 @@ public class PersonBuilder {
     public static final String DEFAULT_EMAIL = "amy@gmail.com";
     public static final String DEFAULT_COMPANY = "Apple";
     public static final String DEFAULT_POSITION = "Software Engineer";
+    public static final String DEFAULT_IMPORTANCE = "High";
 
     private Name name;
     private Phone phone;
@@ -29,6 +32,7 @@ public class PersonBuilder {
     private Company company;
     private Position position;
     private Set<Tag> tags;
+    private Importance importance;
 
     /**
      * Creates a {@code PersonBuilder} with the default details.
@@ -40,6 +44,7 @@ public class PersonBuilder {
         company = new Company(DEFAULT_COMPANY);
         position = new Position(DEFAULT_POSITION);
         tags = new HashSet<>();
+        importance = new Importance(DEFAULT_IMPORTANCE);
     }
 
     /**
@@ -52,6 +57,7 @@ public class PersonBuilder {
         company = personToCopy.getCompany();
         position = personToCopy.getPosition();
         tags = new HashSet<>(personToCopy.getTags());
+        importance = personToCopy.getImportance();
     }
 
     /**
@@ -102,8 +108,16 @@ public class PersonBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code Importance} of the {@code Person} that we are building.
+     */
+    public PersonBuilder withImportance(String importance) {
+        this.importance = new Importance(importance);
+        return this;
+    }
+
     public Person build() {
-        return new Person(name, email, phone, company, position, tags);
+        return new Person(name, email, phone, company, position, tags, importance);
     }
 
 }

@@ -5,11 +5,13 @@ import static seedu.address.logic.Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDE
 import static seedu.address.logic.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.commands.CommandTestUtil.COMPANY_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
+import static seedu.address.logic.commands.CommandTestUtil.IMPORTANCE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
 import static seedu.address.logic.commands.CommandTestUtil.POSITION_DESC_AMY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_COMPANY;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_EMAIL;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_POSITION;
@@ -175,11 +177,11 @@ public class LogicManagerTest {
 
         // Triggers the saveAddressBook method by executing an add command
         String addCommand = AddCommand.COMMAND_WORD + NAME_DESC_AMY + EMAIL_DESC_AMY
-                + PHONE_DESC_AMY + COMPANY_DESC_AMY + POSITION_DESC_AMY;
+                + PHONE_DESC_AMY + COMPANY_DESC_AMY + POSITION_DESC_AMY + IMPORTANCE_DESC_AMY;
         Person expectedPerson = new PersonBuilder(AMY).withTags().build();
         ModelManager expectedModel = new ModelManager();
         System.out.println(ArgumentTokenizer.tokenize(addCommand, PREFIX_NAME, PREFIX_EMAIL,
-                PREFIX_PHONE, PREFIX_COMPANY, PREFIX_POSITION, PREFIX_TAG).toString());
+                PREFIX_PHONE, PREFIX_COMPANY, PREFIX_POSITION, PREFIX_TAG, PREFIX_IMPORTANCE).toString());
         expectedModel.addPerson(expectedPerson);
         assertCommandFailure(addCommand, CommandException.class, expectedMessage, expectedModel);
     }

@@ -17,8 +17,10 @@ public class FindCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all persons whose names contain any of "
             + "the specified keywords (case-insensitive) and displays them as a list with index numbers.\n"
-            + "Parameters: KEYWORD [MORE_KEYWORDS]...\n"
-            + "Example: " + COMMAND_WORD + " alice bob charlie";
+            + "Parameters: KEYWORD [MORE_KEYWORDS]... [c/COMPANY]\n"
+            + "Example: " + COMMAND_WORD + " alice whit c/Google\n"
+            + "Will only find all persons whose names start with alice whit that is from Google\n"
+            + "Company is an Optional Field";
 
     private final PersonContainsKeywordsPredicate predicate;
 

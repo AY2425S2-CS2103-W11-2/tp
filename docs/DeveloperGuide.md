@@ -398,6 +398,26 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
+
+**Use case 6: Add a new meeting**
+
+**MSS**
+
+1.  User enters the command to add a meeting into the input field, along with all details following the specified command syntax
+2.  AddressBook shows a success message containing the details of the added meeting
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Any of the people's names listed do not exist in the AddressBook
+   * 1a1. AddressBook shows an error message.
+   Use case ends.
+
+* 1b. The command is missing datetime and person fields
+   * 1b1. AddressBook shows an error message.
+   Use case ends.
+
 *{More to be added}*
 
 ### Non-Functional Requirements

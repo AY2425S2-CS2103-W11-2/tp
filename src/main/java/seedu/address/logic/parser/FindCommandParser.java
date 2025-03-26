@@ -17,34 +17,18 @@ public class FindCommandParser implements Parser<FindCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public FindCommand parse(String args) throws ParseException {
-        String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                    String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_COMPANY);
+
+        String nameKeyword = argMultimap.getPreamble().trim();
+        String companyKeyword = argMultimap.getValue(PREFIX_COMPANY).orElse("");
+
+        nameKeyword = nameKeyword.replaceAll("\\s+", " ").trim();
+
+        if (nameKeyword.isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        StringBuilder nameKeyword = new StringBuilder();
-        StringBuilder companyKeyword = new StringBuilder();
-
-        //Split The Input By Spaces
-        String[] tokens = trimmedArgs.split("\\s+");
-        boolean isCompanyMode = false;
-
-        for (String token : tokens) {
-            if (token.equalsIgnoreCase(PREFIX_COMPANY.toString())) {
-                isCompanyMode = true;
-            } else {
-                if (isCompanyMode) {
-                    companyKeyword.append(token);
-                    companyKeyword.append(" ");
-                } else {
-                    nameKeyword.append(token);
-                    nameKeyword.append(" ");
-                }
-            }
-        }
-
-        return new FindCommand(nameKeyword.toString().trim(), companyKeyword.toString().trim());
+        return new FindCommand(nameKeyword.trim(), companyKeyword.trim());
     }
 
 }

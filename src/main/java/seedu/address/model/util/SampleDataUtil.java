@@ -10,6 +10,7 @@ import seedu.address.model.meeting.Meeting;
 import seedu.address.model.meeting.MeetingTime;
 import seedu.address.model.person.Company;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Importance;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Person;
 import seedu.address.model.person.Phone;
@@ -25,22 +26,22 @@ public class SampleDataUtil {
         return new Person[] {
             new Person(new Name("Alex Yeoh"), new Email("alexyeoh@example.com"), new Phone("87438807"),
                     new Company("Google"), new Position("Software Engineer"),
-                    getTagSet("friends")),
+                    getTagSet("friends"), new Importance("HIGH")),
             new Person(new Name("Bernice Yu"), new Email("berniceyu@example.com"), new Phone("99272758"),
                     new Company("Microsoft"), new Position("Product Manager"),
-                    getTagSet("colleagues", "friends")),
+                    getTagSet("colleagues", "friends"), new Importance("MEDIUM")),
             new Person(new Name("Charlotte Oliveiro"), new Email("charlotte@example.com"), new Phone("93210283"),
                     new Company("Facebook"), new Position("UX Designer"),
-                    getTagSet("neighbours")),
+                    getTagSet("neighbours"), new Importance("LOW")),
             new Person(new Name("David Li"), new Email("lidavid@example.com"), new Phone("91031282"),
                     new Company("Apple"), new Position("Data Analyst"),
-                    getTagSet("family")),
+                    getTagSet("family"), new Importance("LOW")),
             new Person(new Name("Irfan Ibrahim"), new Email("irfan@example.com"), new Phone("92492021"),
                     new Company("Amazon"), new Position("Marketing Specialist"),
-                    getTagSet("classmates")),
+                    getTagSet("classmates"), new Importance("MEDIUM")),
             new Person(new Name("Roy Balakrishnan"), new Email("royb@example.com"), new Phone("92624417"),
                     new Company("Tesla"), new Position("Mechanical Engineer"),
-                    getTagSet("colleagues"))
+                    getTagSet("colleagues"), new Importance("HIGH"))
         };
     }
 

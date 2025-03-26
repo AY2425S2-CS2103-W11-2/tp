@@ -13,6 +13,7 @@ import seedu.address.model.meeting.MeetingTime;
 import seedu.address.model.person.Address;
 import seedu.address.model.person.Company;
 import seedu.address.model.person.Email;
+import seedu.address.model.person.Importance;
 import seedu.address.model.person.Name;
 import seedu.address.model.person.Phone;
 import seedu.address.model.person.Position;
@@ -153,6 +154,21 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String importance} into an {@code Importance}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code importance} is invalid.
+     */
+    public static Importance parseImportance(String importance) throws ParseException {
+        requireNonNull(importance);
+        String trimmedImportance = importance.trim();
+        if (!Importance.isValidImportance(trimmedImportance)) {
+            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+        }
+        return new Importance(trimmedImportance);
     }
 
     /**

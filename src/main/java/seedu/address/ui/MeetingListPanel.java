@@ -38,6 +38,7 @@ public class MeetingListPanel extends UiPart<Region> {
             super.updateItem(meeting, empty);
 
             if (empty || meeting == null) {
+                logger.info("Meeting list view empty");
                 setGraphic(null);
                 setText(null);
             } else {

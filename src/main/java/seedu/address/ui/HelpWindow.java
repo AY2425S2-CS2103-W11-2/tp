@@ -43,7 +43,6 @@ public class HelpWindow extends UiPart<Stage> {
     public HelpWindow(Stage root) {
         super(FXML, root);
 
-        System.out.println(System.getProperty("user.dir"));
         File file = new File(System.getProperty("user.dir") + "/docs/UserGuide.md");
         Scanner sc = null;
         try {
@@ -70,7 +69,6 @@ public class HelpWindow extends UiPart<Stage> {
                 // check if the line contains an image embed
                 if (!p.matcher(line).find()) {
                     // add the line to the output
-                    System.out.println(line);
                     output += line + "\n";
                 }
             }

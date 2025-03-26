@@ -36,7 +36,7 @@ public class AddMeetingCommandParser implements Parser<AddMeetingCommand> {
         MeetingTime dateTime = ParserUtil.parseMeetingTime(argMultimap.getValue(PREFIX_DATETIME).get());
         Set<String> personList = ParserUtil.parsePersonList(argMultimap.getAllValues(PREFIX_PERSONS));
         String notes = "";
-        if (!notes.isEmpty()) {
+        if (argMultimap.getValue(PREFIX_NOTES).isPresent()) {
             notes = argMultimap.getValue(PREFIX_NOTES).get().trim();
         }
 

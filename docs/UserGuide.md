@@ -114,18 +114,20 @@ Examples:
 
 Finds Contacts whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find KEYWORD [MORE_KEYWORDS] [c/COMPANY]`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords matters. e.g. `Hans Bo` will not match `Bo Hans`
-* Only the name is searched.
+* Only the name is searched if no other options are provided.
 * Command will use Partial Search
 * Only Contacts matching with the full keyword will be returned.
   e.g. `Hans Bo` will return `Hans Bother`, `Hans Bo` and not `Hans Gruber`, `Bo Yang`
+* If the Company Parameter is provided, it will search for a contact that matches **BOTH** the `KEYWORD` provided and the `COMPANY` Provided
 
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex David`, `Alex Davidson`<br>
+* `find alex david c\Google` returns `Alex Davidson` that works at `Google`<br>
 <!-- TODO: Add the picture for the find command -->
 
 ### Filtering persons by tags: `filter`

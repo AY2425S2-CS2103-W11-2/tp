@@ -159,6 +159,26 @@ Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 
+### Add a meeting : `addmeeting`
+
+Adds a new meeting to the address book.
+
+Format: `addmeeting dt/DATETIME mp/PERSON_NAME [mn/NOTES]`
+
+* Adds a new meeting at `DATETIME` with `PERSON_NAME`
+* Multiple people can be at a meeting by specifying multiple people `mp/Alice mp/Bob`
+* `PERSON_NAME` must exist as a contact in the addressbook
+* `NOTES` is not a required field and can be omited or left blank
+* New meetings cannot have the same `DATETIME` with the same `PERSON_NAME`
+
+Examples:
+
+* `addmeeting dt/ 2025-03-21 06:00 mp/ Irfan Ibrahim mn/ Interview for summer internship`
+* `addmeeting dt/ 2025-03-22 18:00 mp/ Roy Balakrishnan mp/ Alex Yeoh mn/ Design review IH project`
+* `addmeeting dt/ 2025-03-23 09:00 mp/ Bernise Yu`
+* `addmeeting dt/ 2025-03-25 21:00 mp/ Roy Balakrishnan mp/ David Li`
+
+
 ### Clearing all entries : `clear`
 
 Clears all entries from the address book.

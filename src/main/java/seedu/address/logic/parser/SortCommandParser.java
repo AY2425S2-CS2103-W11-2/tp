@@ -36,6 +36,7 @@ public class SortCommandParser implements Parser<SortCommand> {
 
         Comparator<Person> comparator = switch (field) {
         case "name" -> Comparator.comparing(Person::getName, Comparator.naturalOrder());
+        case "importance" -> Comparator.comparing(Person::getImportance, new SortComparator());
         default -> throw new ParseException("Invalid field: " + field);
         };
 
@@ -44,8 +45,6 @@ public class SortCommandParser implements Parser<SortCommand> {
         } else if (!"asc".equalsIgnoreCase(order)) {
             throw new ParseException("Invalid order: " + order);
         }
-
         return new SortCommand(comparator, field, order);
-
     }
 }

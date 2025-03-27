@@ -144,6 +144,22 @@ Examples:
 * `filter hiring` returns `John` and `John Doe` if John and John Doe both have `hiring` tags
 <!-- TODO: Add the picture for the filter command -->
 
+### Sort Contact List: `sort`
+
+Sorts Contacts in the AddressBook in ascending or descending order
+
+Format: `sort SORT_TERM ORDER`
+
+* The sort-term is case-sensitive. E.g `importance` will not match `Importance`
+* Only 2 Current `SORT_TERM` is supported:
+  * `name` <br>
+  * `importance`<br>
+* Only 2 ways to specify `ORDER`:
+  * `asc` : Sorts Contacts in Ascending Order
+  * `desc` : Sorts Contacts in Descending Order
+
+Examples:
+* `sort importance desc` returns contact list from the highest importance level to the lowest importance level
 
 ### Deleting a person : `delete`
 

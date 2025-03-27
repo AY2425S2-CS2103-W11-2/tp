@@ -160,7 +160,6 @@ public class ModelManager implements Model {
 
     @Override
     public void updateFilteredPersonList(Predicate<Person> predicate) {
-        System.out.println("filtered person list");
         requireNonNull(predicate);
         filteredPersons.setPredicate(predicate);
     }

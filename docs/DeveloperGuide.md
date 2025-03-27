@@ -425,7 +425,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    * 1a1. AddressBook shows an error message.
    Use case ends.
 
-* 1b. The command is missing datetime and person fields
+* 1b. The command is missing datetime or person fields
    * 1b1. AddressBook shows an error message.
    Use case ends.
 

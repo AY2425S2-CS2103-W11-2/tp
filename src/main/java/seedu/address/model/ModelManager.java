@@ -141,6 +141,12 @@ public class ModelManager implements Model {
         addressBook.setMeeting(target, editedMeeting, filteredPersons);
     }
 
+    @Override
+    public void updateFilteredMeetingList(Predicate<Meeting> predicate) {
+        requireNonNull(predicate);
+        filteredMeetings.setPredicate(predicate);
+    }
+
     //=========== Filtered Person List Accessors =============================================================
 
     /**

@@ -166,7 +166,7 @@ public class ParserUtil {
         requireNonNull(importance);
         String trimmedImportance = importance.trim();
         if (!Importance.isValidImportance(trimmedImportance)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Importance.MESSAGE_CONSTRAINTS);
         }
         return new Importance(trimmedImportance);
     }

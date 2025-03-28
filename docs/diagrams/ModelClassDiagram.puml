@@ -14,7 +14,8 @@ Class UserPrefs
 
 Class UniquePersonList
 Class Person
-Class Address
+Class Company
+Class Position
 Class Email
 Class Name
 Class Phone
@@ -46,7 +47,8 @@ UniquePersonList --> "~* all" Person
 Person *--> Name
 Person *--> Phone
 Person *--> Email
-Person *--> Address
+Person *--> Company
+Person *--> Position
 Person *--> "*" Tag
 
 AddressBook *--> "1" UniqueMeetingList

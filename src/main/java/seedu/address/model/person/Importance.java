@@ -18,6 +18,8 @@ public class Importance {
      */
     public static final String VALIDATION_REGEX = "[^\\s].*";
 
+    private static final String[] VALID_IMPORTANCE_VALUES = {"low", "medium", "high"};
+
     public final String value;
 
     /**
@@ -35,7 +37,17 @@ public class Importance {
      * Returns true if a given string is a valid position.
      */
     public static boolean isValidImportance(String test) {
-        return test.matches(VALIDATION_REGEX);
+        if (!test.matches(VALIDATION_REGEX)) {
+            return false;
+        }
+
+        String normalizedImportance = test.trim().toLowerCase();
+        for (String validImportance : VALID_IMPORTANCE_VALUES) {
+            if (validImportance.equalsIgnoreCase(normalizedImportance)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     @Override

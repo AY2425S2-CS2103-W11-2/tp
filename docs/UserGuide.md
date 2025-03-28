@@ -114,18 +114,20 @@ Examples:
 
 Finds Contacts whose names contain any of the given keywords.
 
-Format: `find KEYWORD [MORE_KEYWORDS]`
+Format: `find KEYWORD [MORE_KEYWORDS] [c/COMPANY]`
 
 * The search is case-insensitive. e.g `hans` will match `Hans`
 * The order of the keywords matters. e.g. `Hans Bo` will not match `Bo Hans`
-* Only the name is searched.
+* Only the name is searched if no other options are provided.
 * Command will use Partial Search
 * Only Contacts matching with the full keyword will be returned.
   e.g. `Hans Bo` will return `Hans Bother`, `Hans Bo` and not `Hans Gruber`, `Bo Yang`
+* If the Company Parameter is provided, it will search for a contact that matches **BOTH** the `KEYWORD` provided and the `COMPANY` Provided
 
 Examples:
 * `find John` returns `john` and `John Doe`
 * `find alex david` returns `Alex David`, `Alex Davidson`<br>
+* `find alex david c\Google` returns `Alex Davidson` that works at `Google`<br>
 <!-- TODO: Add the picture for the find command -->
 
 ### Filtering persons by tags: `filter`
@@ -144,6 +146,22 @@ Examples:
 * `filter hiring` returns `John` and `John Doe` if John and John Doe both have `hiring` tags
 <!-- TODO: Add the picture for the filter command -->
 
+### Sort Contact List: `sort`
+
+Sorts Contacts in the AddressBook in ascending or descending order
+
+Format: `sort SORT_TERM ORDER`
+
+* The sort-term is case-sensitive. E.g `importance` will not match `Importance`
+* Only 2 Current `SORT_TERM` is supported:
+  * `name` <br>
+  * `importance`<br>
+* Only 2 ways to specify `ORDER`:
+  * `asc` : Sorts Contacts in Ascending Order
+  * `desc` : Sorts Contacts in Descending Order
+
+Examples:
+* `sort importance desc` returns contact list from the highest importance level to the lowest importance level
 
 ### Deleting a person : `delete`
 
@@ -158,6 +176,26 @@ Format: `delete INDEX`
 Examples:
 * `list` followed by `delete 2` deletes the 2nd person in the address book.
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+
+### Add a meeting : `addmeeting`
+
+Adds a new meeting to the address book.
+
+Format: `addmeeting dt/DATETIME mp/PERSON_NAME [mn/NOTES]`
+
+* Adds a new meeting at `DATETIME` with `PERSON_NAME`
+* Multiple people can be at a meeting by specifying multiple people `mp/Alice mp/Bob`
+* `PERSON_NAME` must exist as a contact in the addressbook
+* `NOTES` is not a required field and can be omited or left blank
+* New meetings cannot have the same `DATETIME` with the same `PERSON_NAME`
+
+Examples:
+
+* `addmeeting dt/ 2025-03-21 06:00 mp/ Irfan Ibrahim mn/ Interview for summer internship`
+* `addmeeting dt/ 2025-03-22 18:00 mp/ Roy Balakrishnan mp/ Alex Yeoh mn/ Design review IH project`
+* `addmeeting dt/ 2025-03-23 09:00 mp/ Bernise Yu`
+* `addmeeting dt/ 2025-03-25 21:00 mp/ Roy Balakrishnan mp/ David Li`
+
 
 ### Clearing all entries : `clear`
 

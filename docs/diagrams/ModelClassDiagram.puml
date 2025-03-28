@@ -20,6 +20,12 @@ Class Name
 Class Phone
 Class Tag
 
+Class Meeting
+Class UniqueMeetingList
+Class MeetingDateTime
+Class MeetingPerson
+Class MeetingNotes
+
 Class I #FFFFFF
 }
 
@@ -43,12 +49,24 @@ Person *--> Email
 Person *--> Address
 Person *--> "*" Tag
 
+AddressBook *--> "1" UniqueMeetingList
+UniqueMeetingList --> "~* all" Meeting
+Meeting *--> MeetingDateTime
+Meeting *--> "1..*" MeetingPerson
+Meeting *--> MeetingNotes
+
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I
+
+Meeting -[hidden]up--> I
+UniqueMeetingList -[hidden]right-> I
 
 Name -[hidden]right-> Phone
 Phone -[hidden]right-> Address
 Address -[hidden]right-> Email
+
+MeetingDateTime -[hidden]right-> MeetingPerson
+MeetingPerson -[hidden]right-> MeetingNotes
 
 ModelManager --> "~* filtered" Person
 @enduml

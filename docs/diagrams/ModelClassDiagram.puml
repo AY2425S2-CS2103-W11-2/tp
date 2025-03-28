@@ -50,10 +50,11 @@ Person *--> Address
 Person *--> "*" Tag
 
 AddressBook *--> "1" UniqueMeetingList
-UniqueMeetingList --> "~* all" Meeting
+UniqueMeetingList --> "~* filtered" Meeting
 Meeting *--> MeetingDateTime
 Meeting *--> "1..*" MeetingPerson
-Meeting *--> MeetingNotes
+Meeting *--> "1" MeetingNotes
+Meeting *--> "1..*" Person
 
 Person -[hidden]up--> I
 UniquePersonList -[hidden]right-> I

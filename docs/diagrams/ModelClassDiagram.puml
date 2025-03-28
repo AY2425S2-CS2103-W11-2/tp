@@ -19,6 +19,7 @@ Class Email
 Class Name
 Class Phone
 Class Tag
+Class Importance
 
 Class Meeting
 Class UniqueMeetingList
@@ -48,6 +49,7 @@ Person *--> Phone
 Person *--> Email
 Person *--> Address
 Person *--> "*" Tag
+Person *--> Importance
 
 AddressBook *--> "1" UniqueMeetingList
 UniqueMeetingList --> "~* filtered" Meeting

@@ -54,7 +54,7 @@ public class HelpWindow extends UiPart<Stage> {
         String output = "";
         boolean inHelpSection = false;
         Pattern p = Pattern.compile("!?\\[.*?\\]\\((.*?)\\)");
-        while (sc.hasNextLine()) {
+        while (sc != null && sc.hasNextLine()) {
             line = sc.nextLine();
             // check
             if (line.contains("## Features")) {

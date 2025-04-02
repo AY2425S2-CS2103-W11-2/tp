@@ -11,6 +11,7 @@ import seedu.address.model.person.Person;
 /**
  * Parses input arguments and creates a new SortCommand object
  */
+@SuppressWarnings("unchecked")
 public class SortCommandParser implements Parser<SortCommand> {
 
     /**

@@ -12,6 +12,7 @@ import seedu.address.logic.commands.AddMeetingCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.meeting.Meeting;
 import seedu.address.model.meeting.MeetingTime;
+import seedu.address.model.meeting.Notes;
 
 /**
  * Parses input arguments and creates a new AddMeetingCommand object
@@ -40,7 +41,7 @@ public class AddMeetingCommandParser implements Parser<AddMeetingCommand> {
             notes = argMultimap.getValue(PREFIX_NOTES).get().trim();
         }
 
-        Meeting meeting = new Meeting(dateTime, personList, notes);
+        Meeting meeting = new Meeting(dateTime, personList, new Notes(notes));
 
         return new AddMeetingCommand(meeting);
     }

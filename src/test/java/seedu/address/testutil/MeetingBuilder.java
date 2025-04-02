@@ -6,6 +6,7 @@ import java.util.Set;
 
 import seedu.address.model.meeting.Meeting;
 import seedu.address.model.meeting.MeetingTime;
+import seedu.address.model.meeting.Notes;
 import seedu.address.model.util.SampleDataUtil;
 
 /**
@@ -15,11 +16,11 @@ public class MeetingBuilder {
 
     public static final String DEFAULT_MEETINGTIME = "2025-12-30 14:00";
     public static final Set<String> DEFAULT_PERSONS = new HashSet<>(Arrays.asList("Alice"));
-    public static final String DEFAULT_NOTES = "Discuss about project";
+    public static final Notes DEFAULT_NOTES = new Notes("Discuss about project");
 
     private MeetingTime meetingTime;
     private Set<String> persons;
-    private String notes;
+    private Notes notes;
 
     /**
      * Creates a {@code MeetingBuilder} with the default details.
@@ -59,7 +60,7 @@ public class MeetingBuilder {
      * Sets the {@code Notes} of the {@code Meeting} that we are building.
      */
     public MeetingBuilder withNotes(String notes) {
-        this.notes = notes;
+        this.notes = new Notes(notes);
         return this;
     }
 

@@ -11,6 +11,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.meeting.Meeting;
 import seedu.address.model.meeting.MeetingTime;
+import seedu.address.model.meeting.Notes;
 
 /**
  * Jackson-friendly version of {@link Meeting}.
@@ -41,7 +42,7 @@ class JsonAdaptedMeeting {
     public JsonAdaptedMeeting(Meeting source) {
         meetingTime = source.getDateTime().toString();
         persons.addAll(source.getPersonList());
-        notes = source.getNotes();
+        notes = source.getNotes().value;
     }
 
     /**
@@ -70,7 +71,7 @@ class JsonAdaptedMeeting {
         }
         final Set<String> modelPersons = new HashSet<>(meetingPersons);
 
-        final String modelNotes = notes;
+        final Notes modelNotes = new Notes(notes);
 
         return new Meeting(modelMeetingTime, modelPersons, modelNotes);
     }

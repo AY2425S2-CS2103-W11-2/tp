@@ -8,6 +8,7 @@ import seedu.address.model.AddressBook;
 import seedu.address.model.ReadOnlyAddressBook;
 import seedu.address.model.meeting.Meeting;
 import seedu.address.model.meeting.MeetingTime;
+import seedu.address.model.meeting.Notes;
 import seedu.address.model.person.Company;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Importance;
@@ -48,11 +49,11 @@ public class SampleDataUtil {
     public static Meeting[] getSampleMeetings() {
         return new Meeting[] {
             new Meeting(new MeetingTime("2025-12-30 14:00"), getPersonSet("Bernice Yu", "Alex Yeoh", "David Li"),
-                        "Discuss about the new project"),
+                        new Notes("Discuss about the new project")),
             new Meeting(new MeetingTime("2025-12-15 15:20"), getPersonSet("David Li"),
-                        "Interview for summer internship"),
+                        new Notes("Interview for summer internship")),
             new Meeting(new MeetingTime("2025-02-13 10:00"), getPersonSet("David Li", "Roy Balakrishnan"),
-                        "Consultation at Singapore Coding Conference")
+                        new Notes("Consultation at Singapore Coding Conference"))
         };
     }
 

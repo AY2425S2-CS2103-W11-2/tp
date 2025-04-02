@@ -362,6 +362,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    * 2a1. AddressBook uses pagination to display contacts by batches
      Use case ends.
 
+
 **Use case 4: Search for Specific Contact by Name**
 
 **MSS**
@@ -370,7 +371,86 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
    Use case ends.
 
-**Use case 5: View help for commands**
+
+**Use case 5: Edit an existing contact**
+
+**MSS**
+
+1.  From the page where contacts are listed, user enters the command to edit a contact into the input field, along with the index of the contact they would like to edit and all details to be edited following the specified command syntax
+2.  AddressBook shows a success message containing all details of the edited contact
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. The edited name, email and/or phone number provided is invalid 
+   * 1a1. AddressBook shows an error message.
+   Use case ends.
+
+* 1b. AddressBook detects invalid index number 
+    * 1b1. AddressBook shows an error message
+      Use case ends.
+
+* 1c. AddressBook detects index does not exist
+    * 1c1. AddressBook shows an error message
+      Use case ends.  
+
+
+**Use case 6: Add a meeting**
+
+**MSS**
+
+1.  User enters the command to add a meeting into the input field, along with all details following the specified command syntax
+2.  AddressBook shows a success message containing the details of the added meeting
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Any of the people's names listed do not exist in the AddressBook
+   * 1a1. AddressBook shows an error message.
+   Use case ends.
+
+* 1b. The command is missing datetime or person fields
+   * 1b1. AddressBook shows an error message.
+   Use case ends.
+
+
+**Use case 7: List all meetings**
+
+**MSS**
+
+1. User enters command to view all contacts
+2. AddressBook shows all contacts that have been previously added by the user
+
+    Use case ends.
+   
+
+**Use case 8: Edit an existing meeting**
+
+**MSS**
+
+1.  From the page where contacts are listed, user enters the command to edit a meeting into the input field, along with all details to be edited following the specified command syntax
+2.  AddressBook shows a success message containing the new details of the edited meeting
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Any of the people's names listed do not exist in the AddressBook
+   * 1a1. AddressBook shows an error message.
+   Use case ends.
+
+* 1b. AddressBook detects invalid index number 
+    * 1b1. AddressBook shows an error message
+      Use case ends.
+
+* 1c. AddressBook detects index does not exist
+    * 1c1. AddressBook shows an error message
+      Use case ends.  
+
+
+**Use case 9: View help for commands**
 1. User enters command or clicks the help tab to get help for command usage
 2. AddressBook opens a seperate window to display a snippet of the user guide
     with the commands and their usages
@@ -400,6 +480,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
+
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
@@ -410,26 +491,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 7. Startup time should not exceed 2 seconds on a typical modern system
 8. The system should gracefully handle and log errors without crashing
 
-**Use case 6: Add a new meeting**
-
-**MSS**
-
-1.  User enters the command to add a meeting into the input field, along with all details following the specified command syntax
-2.  AddressBook shows a success message containing the details of the added meeting
-
-    Use case ends.
-
-**Extensions**
-
-* 1a. Any of the people's names listed do not exist in the AddressBook
-   * 1a1. AddressBook shows an error message.
-   Use case ends.
-
-* 1b. The command is missing datetime or person fields
-   * 1b1. AddressBook shows an error message.
-   Use case ends.
-
-*{More to be added}*
 
 ### Glossary
 

@@ -69,6 +69,10 @@ dependencies {
 }
 
 shadowJar {
+    from("${project.rootDir}/docs") {
+        include 'UserGuide.md'
+        into 'docs'
+    }
     archiveFileName = 'internhive.jar'
 }
 

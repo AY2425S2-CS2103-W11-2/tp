@@ -328,7 +328,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    * 1a1. AddressBook shows an error message.
    Use case ends.
 
-* 1b. The name, email and/or phone number of the contact provided is invalid 
+* 1b. The name, email and/or phone number of the contact provided is invalid
    * 1bAddressBook shows an error message.
    Use case ends.
 
@@ -342,13 +342,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    Use case ends.
 
 **Extensions**
-* 1a. AddressBook detects invalid index number 
+* 1a. AddressBook detects invalid index number
     * 1a1. AddressBook shows an error message
       Use case ends.
 
 * 1b. AddressBook detects index does not exist
     * 1b1. AddressBook shows an error message
-      Use case ends.  
+      Use case ends.
 
 
 **Use case 3: View all contacts**
@@ -383,17 +383,17 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 **Extensions**
 
-* 1a. The edited name, email and/or phone number provided is invalid 
+* 1a. The edited name, email and/or phone number provided is invalid
    * 1a1. AddressBook shows an error message.
    Use case ends.
 
-* 1b. AddressBook detects invalid index number 
+* 1b. AddressBook detects invalid index number
     * 1b1. AddressBook shows an error message
       Use case ends.
 
 * 1c. AddressBook detects index does not exist
     * 1c1. AddressBook shows an error message
-      Use case ends.  
+      Use case ends.
 
 
 **Use case 6: Add a meeting**
@@ -424,7 +424,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 2. AddressBook shows all contacts that have been previously added by the user
 
     Use case ends.
-   
+
 
 **Use case 8: Edit an existing meeting**
 
@@ -441,13 +441,13 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
    * 1a1. AddressBook shows an error message.
    Use case ends.
 
-* 1b. AddressBook detects invalid index number 
+* 1b. AddressBook detects invalid index number
     * 1b1. AddressBook shows an error message
       Use case ends.
 
 * 1c. AddressBook detects index does not exist
     * 1c1. AddressBook shows an error message
-      Use case ends.  
+      Use case ends. 
 
 
 **Use case 9: View help for commands**
@@ -498,7 +498,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 * **Mainstream OS**: Windows, Linux, Unix, MacOS
 * **Network**: Group of individuals connected through professional or personal relationships
 * **Private contact detail**: A contact detail that is not meant to be shared with others
-* **Meeting**: Any interaction (past or upcoming) between the user and the contact 
+* **Meeting**: Any interaction (past or upcoming) between the user and the contact
 
 --------------------------------------------------------------------------------------------------------------------
 

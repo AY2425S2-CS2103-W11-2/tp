@@ -18,13 +18,13 @@ public class Meeting {
     // Fields
     private final MeetingTime meetingTime;
     private final Set<String> people = new HashSet<>();
-    private final String notes;
+    private final Notes notes;
 
 
     /**
      * Every field must be present and not null.
      */
-    public Meeting(MeetingTime meetingTime, Set<String> people, String notes) {
+    public Meeting(MeetingTime meetingTime, Set<String> people, Notes notes) {
         requireAllNonNull(meetingTime, people, notes);
         this.meetingTime = meetingTime;
         this.people.addAll(people);
@@ -43,8 +43,22 @@ public class Meeting {
         return Collections.unmodifiableSet(people);
     }
 
-    public String getNotes() {
+    public Notes getNotes() {
         return notes;
+    }
+
+    /**
+     * Returns true if both persons have the same name.
+     * This defines a weaker notion of equality between two persons.
+     */
+    public boolean isSameMeeting(Meeting otherMeeting) {
+        if (otherMeeting == this) {
+            return true;
+        }
+
+        return otherMeeting != null
+                && otherMeeting.getDateTime().equals(getDateTime())
+                && otherMeeting.getPersonList().equals(getPersonList());
     }
 
     /**

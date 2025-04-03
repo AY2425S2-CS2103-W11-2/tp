@@ -190,9 +190,15 @@ Format: `addmeeting dt/DATETIME mp/CONTACT_NAME... [mn/NOTES]`
 * `NOTES` is not a required field and can be omited or left blank.
 * New meetings cannot have the same `DATETIME` with the same `CONTACT_NAME`.
 
+* `DATETIME` can only be in the following formats: <br>
+  * yyyy-MM-dd HH:mm (e.g., 2024-04-01 14:30)
+  * dd/MM/yyyy HH:mm (e.g., 01/04/2024 14:30)
+  * MM/dd/yyyy HH:mm (e.g., 04/01/2024 14:30)
+
 Examples:
 * `addmeeting dt/2025-03-21 06:00 mp/Irfan Ibrahim mn/Interview for summer internship`
-* `addmeeting dt/2025-03-25 21:00 mp/Roy Balakrishnan mp/David Li`
+* `addmeeting dt/25-03-2020 21:00 mp/Roy Balakrishnan mp/David Li`
+* `addmeeting dt/12-31-2024 21:00 mp/Roy Balakrishnan mp/David Li mn/Interview for Scholarship`
 
 Format: `editmeeting INDEX [dt/DATETIME] [mp/CONTACT_NAME]... [mn/NOTES]`
 

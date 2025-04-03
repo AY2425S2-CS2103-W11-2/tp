@@ -1,11 +1,11 @@
 package seedu.address.model.meeting;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeParseException;
-
 import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.AppUtil.checkArgument;
+
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
 
 /**
  * Represents a Meeting's time in the address book.
@@ -25,13 +25,13 @@ public class MeetingTime {
      */
     public static final String VALIDATION_REGEX = "^(?=.*[0-9])[\\d/\\-:\\s]+$";
 
-    public final LocalDateTime meetingTime;
-
     private static final DateTimeFormatter[] ACCEPTED_FORMATS = {
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"),
             DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"),
             DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm")
     };
+
+    public final LocalDateTime meetingTime;
 
     /**
      * Constructs a {@code MeetingTime}.
@@ -48,8 +48,8 @@ public class MeetingTime {
         for (DateTimeFormatter formatter : ACCEPTED_FORMATS) {
             try {
                 return LocalDateTime.parse(inputTime, formatter);
-            } catch (DateTimeParseException ignored) {
-
+            } catch (Exception e) {
+                continue;
             }
         }
         throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);

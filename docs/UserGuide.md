@@ -200,15 +200,17 @@ Examples:
 * `addmeeting dt/25-03-2020 21:00 mp/Roy Balakrishnan mp/David Li`
 * `addmeeting dt/12-31-2024 21:00 mp/Roy Balakrishnan mp/David Li mn/Interview for Scholarship`
 
+### Edit a meeting : `editmeeting`
 Format: `editmeeting INDEX [dt/DATETIME] [mp/CONTACT_NAME]... [mn/NOTES]`
 
-* Edits the meeting at the specified `INDEX`. The index refers to the index number shown in the displayed meeting list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the meeting at the specified `INDEX`. The index refers to the index number shown in the displayed meeting list. The index **must be a positive integer** 1, 2, 3, ...
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing meeting contacts, the existing contact names will be removed i.e adding of contact names is not cumulative.
+* When editing meeting contacts, the existing contact names will be replaced with the new list(s) of contact(s) in the input
 
 Examples:
 *  `editmeeting 1 dt/2025-10-10 08:00 mn/Discuss project` Edits the meeting datetime and notes of the 1st meeting to be `2025-10-10 08:00` and `Discuss project` respectively.
+*  `editmeeting 1 dt/2025-10-10 08:00 mp/Alice mp/Bob` Edits the meeting replaces all the contacts of the meeting with just `Alice` and `Bob`.
 
 ### Deleting a meeting : `delete`
 

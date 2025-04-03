@@ -61,8 +61,9 @@ public class Messages {
         final StringBuilder builder = new StringBuilder();
         builder.append("Date: ")
                 .append(meeting.getDateTime())
-                .append("; Contacts: ");
-        meeting.getPersonList().forEach(builder::append);
+                .append("; Persons: ");
+        meeting.getPersonList().forEach(p -> builder.append(p).append(", "));
+        builder.delete(builder.length() - 2, builder.length());
         builder.append("; Notes: ")
                 .append(meeting.getNotes());
         return builder.toString();

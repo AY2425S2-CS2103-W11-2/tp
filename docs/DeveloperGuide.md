@@ -398,18 +398,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
       Use case resumes at step 2.
 
-*{More to be added}*
-
-### Non-Functional Requirements
-
-1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
-4. After entering a command, a user should be able to see a visible response message within 1 second
-5. Should return search results for a network size of up to 100,000 within 1 second
-7. Startup time should not exceed 2 seconds on a typical modern system
-8. The system should gracefully handle and log errors without crashing
-
 **Use case 6: Add a new meeting**
 
 **MSS**
@@ -422,14 +410,48 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **Extensions**
 
 * 1a. Any of the people's names listed do not exist in the AddressBook
-   * 1a1. AddressBook shows an error message.
-   Use case ends.
+    * 1a1. AddressBook shows an error message.
+      Use case ends.
 
 * 1b. The command is missing datetime or person fields
-   * 1b1. AddressBook shows an error message.
-   Use case ends.
+    * 1b1. AddressBook shows an error message.
+      Use case ends.
+
+**Use case 7: List all meetings**
+
+**MSS**
+
+1.  User enters the command to list all meetings
+2.  AddressBook shows a success message containing the details of the added meeting
+
+    Use case ends.
+
+**Use case 8: Edit a new meeting**
+
+**MSS**
+
+1.  User enters the command to edit a meeting into the input field, along with all details following the specified command syntax
+2.  AddressBook shows a success message containing the details of the added meeting
+
+    Use case ends.
+
+**Extensions**
+
+* 1a. Any of the people's names listed do not exist in the AddressBook
+    * 1a1. AddressBook shows an error message.
+      Use case ends.
 
 *{More to be added}*
+
+### Non-Functional Requirements
+
+1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
+2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
+4. After entering a command, a user should be able to see a visible response message within 1 second
+5. Should return search results for a network size of up to 100,000 within 1 second
+7. Startup time should not exceed 2 seconds on a typical modern system
+8. The system should gracefully handle and log errors without crashing
 
 ### Glossary
 

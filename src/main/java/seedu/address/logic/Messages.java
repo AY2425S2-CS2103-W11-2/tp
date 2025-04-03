@@ -64,8 +64,6 @@ public class Messages {
                 .append("; Persons: ");
         meeting.getPersonList().forEach(p -> builder.append(p).append(", "));
         builder.delete(builder.length() - 2, builder.length());
-                .append("; Contacts: ");
-        meeting.getPersonList().forEach(builder::append);
         builder.append("; Notes: ")
                 .append(meeting.getNotes());
         return builder.toString();

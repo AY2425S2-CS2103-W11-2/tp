@@ -78,8 +78,8 @@ Adds a person to the address book.
 Format: `add n/NAME e/EMAIL p/PHONE_NUMBER c/COMPANY j/POSITION [t/TAG]…​ i/IMPORTANCE`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Duplicate names (case-insensitive) are not allowed
-A person can have any number of tags (including 0)
+Duplicate names (case-insensitive) are not allowed <br>
+A person can have any number of tags (including 0) <br>
 Special tags: hiring - indicates that the contact is open to hiring <br>
 **IMPORTANCE** Field can only be one of the following: High, Medium, Low
 </div>

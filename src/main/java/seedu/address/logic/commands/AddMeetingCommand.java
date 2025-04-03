@@ -24,7 +24,7 @@ public class AddMeetingCommand extends Command {
             + PREFIX_PERSONS + "CONTACTNAME..."
             + "[" + PREFIX_NOTES + "NOTES] "
             + "Example: " + COMMAND_WORD + " "
-            + PREFIX_DATETIME + "03-12-2025 12:00 "
+            + PREFIX_DATETIME + "03/12/2025 12:00 "
             + PREFIX_PERSONS + "Alice "
             + PREFIX_PERSONS + "Bob "
             + PREFIX_NOTES + "Discuss about project";

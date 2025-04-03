@@ -47,6 +47,7 @@ public class EditMeetingCommand extends Command {
     public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Contact: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the address book";
+    public static final String MESSAGE_EMPTY_PERSONS = "Meeting requires at least one person";
 
     private final Index index;
     private final EditMeetingDescriptor editMeetingDescriptor;
@@ -77,6 +78,9 @@ public class EditMeetingCommand extends Command {
 
         if (!meetingToEdit.isSameMeeting(editedMeeting) && model.hasMeeting(editedMeeting)) {
             throw new CommandException(MESSAGE_DUPLICATE_MEETING);
+        }
+        if (editedMeeting.getPersonList().isEmpty()) {
+            throw new CommandException(MESSAGE_EMPTY_PERSONS);
         }
 
         model.setMeeting(meetingToEdit, editedMeeting);
@@ -146,7 +150,6 @@ public class EditMeetingCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            System.out.println("isAnyFieldEdited " + people);
             return CollectionUtil.isAnyNonNull(meetingTime, notes, people);
         }
 
@@ -171,7 +174,6 @@ public class EditMeetingCommand extends Command {
          * A defensive copy of {@code people} is used internally.
          */
         public void setPeople(Set<String> people) {
-            System.out.println("setPeople " + people);
             this.people = (people != null) ? new HashSet<>(people) : null;
         }
 
@@ -181,7 +183,6 @@ public class EditMeetingCommand extends Command {
          * Returns {@code Optional#empty()} if {@code people} is null.
          */
         public Optional<Set<String>> getPeople() {
-            System.out.println("getPeople " + people);
             return (people != null) ? Optional.of(Collections.unmodifiableSet(people)) : Optional.empty();
         }
 

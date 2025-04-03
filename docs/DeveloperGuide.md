@@ -421,7 +421,14 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 **MSS**
 1.  User enters the command to delete a meeting into the input field, along with the index of the specified meeting
 2.  AddressBook shows a success message containing the name of the deleted meeting
+Use case ends.
 
+**Use case 8: Add a new meeting**
+
+**MSS**
+
+1.  User enters the command to add a meeting into the input field, along with all details following the specified command syntax
+2.  AddressBook shows a success message containing the details of the added meeting
    Use case ends.
 
 **Extensions**
@@ -434,7 +441,7 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
       Use case ends.
 
 
-**Use case 8: List all meetings**
+**Use case 9: List all meetings**
 
 **MSS**
 
@@ -444,31 +451,34 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
     Use case ends.
 
 
-**Use case 9: Edit an existing meeting**
+**Use case 10: List all meetings**
 
 **MSS**
 
-1.  From the page where contacts are listed, user enters the command to edit a meeting into the input field, along with all details to be edited following the specified command syntax
-2.  AddressBook shows a success message containing the new details of the edited meeting
+1.  User enters the command to list all meetings
+2.  AddressBook shows a success message containing the details of the added meeting
+
+    Use case ends.
+
+**Use case 11: Edit a new meeting**
+
+**MSS**
+
+1.  User enters the command to edit a meeting into the input field, along with all details following the specified command syntax
+2.  AddressBook shows a success message containing the details of the added meeting
 
     Use case ends.
 
 **Extensions**
 
 * 1a. Any of the people's names listed do not exist in the AddressBook
-   * 1a1. AddressBook shows an error message.
-   Use case ends.
-
-* 1b. AddressBook detects invalid index number
-    * 1b1. AddressBook shows an error message
+    * 1a1. AddressBook shows an error message.
       Use case ends.
 
-* 1c. AddressBook detects index does not exist
-    * 1c1. AddressBook shows an error message
-      Use case ends.
+*{More to be added}*
 
 
-**Use case 10: View help for commands**
+**Use case 11: View help for commands**
 1. User enters command or clicks the help tab to get help for command usage
 2. AddressBook opens a seperate window to display a snippet of the user guide
     with the commands and their usages
@@ -478,6 +488,18 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 *{More to be added}*
 
+### Non-Functional Requirements
+
+1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
+2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
+
+* 1b. AddressBook detects invalid index number
+    * 1b1. AddressBook shows an error message
+      Use case ends.
+
+* 1c. AddressBook detects index does not exist
+    * 1c1. AddressBook shows an error message
+      Use case ends.
 
 ### Non-Functional Requirements
 
@@ -488,7 +510,6 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 5. Should return search results for a network size of up to 100,000 within 1 second
 7. Startup time should not exceed 2 seconds on a typical modern system
 8. The system should gracefully handle and log errors without crashing
-
 
 ### Glossary
 

@@ -36,7 +36,7 @@ public class EditMeetingCommand extends Command {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_DATETIME + "DATETIME] "
-            + "[" + PREFIX_PERSONS + "CONTAT_NAME] "
+            + "[" + PREFIX_PERSONS + "CONTACT_NAME] "
             + "[" + PREFIX_NOTES + "NOTES] "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_DATETIME + "03-12-2025 12:00 "

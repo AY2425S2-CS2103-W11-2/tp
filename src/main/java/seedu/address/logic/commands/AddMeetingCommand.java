@@ -21,8 +21,8 @@ public class AddMeetingCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a meeting to the address book. "
             + "Parameters: "
             + PREFIX_DATETIME + "DATETIME "
-            + "[" + PREFIX_PERSONS + "PERSONS]..."
-            + PREFIX_NOTES + "NOTES "
+            + PREFIX_PERSONS + "CONTACTNAME..."
+            + "[" + PREFIX_NOTES + "NOTES] "
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_DATETIME + "03-12-2025 12:00 "
             + PREFIX_PERSONS + "Alice "
@@ -30,7 +30,7 @@ public class AddMeetingCommand extends Command {
             + PREFIX_NOTES + "Discuss about project";
 
     public static final String MESSAGE_SUCCESS = "New meeting added: %1$s";
-    public static final String MESSAGE_DUPLICATE_PERSON = "This meeting already exists in the address book";
+    public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the address book";
 
     private final Meeting toAdd;
 
@@ -47,7 +47,7 @@ public class AddMeetingCommand extends Command {
         requireNonNull(model);
 
         if (model.hasMeeting(toAdd)) {
-            throw new CommandException(MESSAGE_DUPLICATE_PERSON);
+            throw new CommandException(MESSAGE_DUPLICATE_MEETING);
         }
 
         try {

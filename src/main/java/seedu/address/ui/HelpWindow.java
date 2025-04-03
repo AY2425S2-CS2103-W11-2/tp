@@ -1,7 +1,6 @@
 package seedu.address.ui;
 
-import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.Scanner;
 import java.util.logging.Logger;
 import java.util.regex.Pattern;
@@ -22,7 +21,7 @@ import seedu.address.commons.core.LogsCenter;
 public class HelpWindow extends UiPart<Stage> {
 
     public static final String USERGUIDE_URL =
-        "https://github.com/AY2425S2-CS2103-W11-2/tp/blob/master/docs/UserGuide.md";
+        "https://ay2425s2-cs2103-w11-2.github.io/tp/UserGuide.html";
     public static final String HELP_MESSAGE =
         "Use the 'help' command or refer to the user guide: " + USERGUIDE_URL;
 
@@ -43,11 +42,11 @@ public class HelpWindow extends UiPart<Stage> {
     public HelpWindow(Stage root) {
         super(FXML, root);
 
-        File file = new File(System.getProperty("user.dir") + "/docs/UserGuide.md");
+        InputStream resourcesStream = getClass().getResourceAsStream("/docs/UserGuide.md");
         Scanner sc = null;
         try {
-            sc = new Scanner(file);
-        } catch (FileNotFoundException e) {
+            sc = new Scanner(resourcesStream);
+        } catch (Exception e) {
             System.out.println("User guide has moved??");
         }
         String line = "";

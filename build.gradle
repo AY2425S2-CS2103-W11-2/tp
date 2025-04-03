@@ -69,7 +69,15 @@ dependencies {
 }
 
 shadowJar {
+    from("${project.rootDir}/docs") {
+        include 'UserGuide.md'
+        into 'docs'
+    }
     archiveFileName = 'internhive.jar'
+}
+
+run {
+    enableAssertions = true
 }
 
 defaultTasks 'clean', 'test'

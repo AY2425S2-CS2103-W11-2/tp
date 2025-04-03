@@ -36,7 +36,7 @@ public class EditMeetingCommand extends Command {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_DATETIME + "DATETIME] "
-            + "[" + PREFIX_PERSONS + "PERSONS] "
+            + "[" + PREFIX_PERSONS + "CONTACT_NAME] "
             + "[" + PREFIX_NOTES + "NOTES] "
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_DATETIME + "03-12-2025 12:00 "
@@ -44,7 +44,7 @@ public class EditMeetingCommand extends Command {
             + PREFIX_PERSONS + "Bob "
             + PREFIX_NOTES + "Settle admin matters";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Contact: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the address book";
 
@@ -117,7 +117,7 @@ public class EditMeetingCommand extends Command {
     public String toString() {
         return new ToStringBuilder(this)
                 .add("index", index)
-                .add("editPersonDescriptor", editMeetingDescriptor)
+                .add("editMeetingDescriptor", editMeetingDescriptor)
                 .toString();
     }
 

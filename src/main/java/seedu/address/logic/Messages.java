@@ -61,7 +61,6 @@ public class Messages {
         final StringBuilder builder = new StringBuilder();
         builder.append("Date: ")
                 .append(meeting.getDateTime())
-        add-meeting-message-formatting
                 .append("; Persons: ");
         meeting.getPersonList().forEach(p -> builder.append(p).append(", "));
         builder.delete(builder.length() - 2, builder.length());

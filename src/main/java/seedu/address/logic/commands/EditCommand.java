@@ -10,8 +10,13 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEETINGS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Objects;
+import java.util.Optional;
+import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -88,12 +93,16 @@ public class EditCommand extends Command {
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
         // get a list of all meetings that contain this old name
-        List<Meeting> meetings = model.getFilteredMeetingList().stream().filter(meeting -> meeting.getPersonList().contains(personToEdit.getName().fullName)).toList();
+        List<Meeting> meetings = model.getFilteredMeetingList().stream()
+                .filter(meeting -> meeting.getPersonList().contains(personToEdit.getName().fullName)).toList();
         for (Meeting meeting : meetings) {
-            EditMeetingCommand.EditMeetingDescriptor editMeetingDescriptor = new EditMeetingCommand.EditMeetingDescriptor();
+            EditMeetingCommand.EditMeetingDescriptor editMeetingDescriptor =
+                    new EditMeetingCommand.EditMeetingDescriptor();
             editMeetingDescriptor.setMeetingTime(meeting.getDateTime());
             editMeetingDescriptor.setNotes(meeting.getNotes());
-            ArrayList<String> persons = meeting.getPersonList().stream().filter(p -> !p.equals(personToEdit.getName().fullName)).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+            ArrayList<String> persons = meeting.getPersonList().stream()
+                    .filter(p -> !p.equals(personToEdit.getName().fullName))
+                    .collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
             persons.add(editedPerson.getName().fullName);
             Set<String> personsToAdd = new HashSet<>(persons);
             editMeetingDescriptor.setPeople(personsToAdd);

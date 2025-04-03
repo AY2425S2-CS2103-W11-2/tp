@@ -71,16 +71,16 @@ Opens a seperate window to show a snippet of the user guide detailing all the av
 Format: `help`
 
 
-### Adding a person: `add`
+### Adding a contact: `add`
 
-Adds a person to the address book.
+Adds a contact to the address book.
 
 Format: `add n/NAME e/EMAIL p/PHONE_NUMBER c/COMPANY j/POSITION [t/TAG]…​ i/IMPORTANCE`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Duplicate names (case-insensitive) are not allowed <br>
-A person can have any number of tags (including 0) <br>
-Special tags: hiring - indicates that the contact is open to hiring <br>
+Duplicate names (case-insensitive) are not allowed. <br>
+A contact can have any number of tags (including 0). <br>
+Special tags: hiring - indicates that the contact is open to hiring; <br>
 **IMPORTANCE** Field can only be one of the following: High, Medium, Low
 </div>
 
@@ -88,72 +88,72 @@ Examples:
 * `add n/John Doe e/johnd@example.com p/98765432 c/Apple j/Software Engineer i/High`
 * `add n/Betsy Crowe t/friend e/betsycrowe@example.com c/Google j/Software Designer p/1234567 t/criminal i/Low`
 
-### Listing all persons : `list`
+### Listing all contacts : `list`
 
-Shows a list of all persons in the address book.
+Shows a list of all contacts in the address book.
 
 Format: `list`
 
-### Editing a person : `edit`
+### Editing a contacts : `edit`
 
-Edits an existing person in the address book.
+Edits an existing contacts in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​ [i/IMPORTANCE]`
 
-* Edits the person at the specified `INDEX`. The index refers to the index number shown in the displayed person list. The index **must be a positive integer** 1, 2, 3, …​
+* Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
-* You can remove all the person’s tags by typing `t/` without
+* When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
+* You can remove all the contact’s tags by typing `t/` without
     specifying any tags after it.
 
 Examples:
-*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
-*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd person to be `Betsy Crower` and clears all existing tags.
+*  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st contact to be `91234567` and `johndoe@example.com` respectively.
+*  `edit 2 n/Betsy Crower t/` Edits the name of the 2nd contact to be `Betsy Crower` and clears all existing tags.
 
-### Locating persons by name: `find`
+### Locating contacts by name: `find`
 
 Finds Contacts whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS] [c/COMPANY]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`
-* The order of the keywords matters. e.g. `Hans Bo` will not match `Bo Hans`
+* The search is case-insensitive. e.g `hans` will match `Hans`.
+* The order of the keywords matters. e.g. `Hans Bo` will not match `Bo Hans`.
 * Only the name is searched if no other options are provided.
-* Command will use Partial Search
+* Command will use Partial Search.
 * Only Contacts matching with the full keyword will be returned.
-  e.g. `Hans Bo` will return `Hans Bother`, `Hans Bo` and not `Hans Gruber`, `Bo Yang`
-* If the Company Parameter is provided, it will search for a contact that matches **BOTH** the `KEYWORD` provided and the `COMPANY` Provided
+  e.g. `Hans Bo` will return `Hans Bother`, `Hans Bo` and not `Hans Gruber`, `Bo Yang`.
+* If the Company Parameter is provided, it will search for a contact that matches **BOTH** the `KEYWORD` provided and the `COMPANY` Provided.
 
 Examples:
-* `find John` returns `john` and `John Doe`
-* `find alex david` returns `Alex David`, `Alex Davidson`<br>
-* `find alex david c\Google` returns `Alex Davidson` that works at `Google`<br>
+* `find John` returns `john` and `John Doe`.
+* `find alex david` returns `Alex David`, `Alex Davidson`.<br>
+* `find alex david c\Google` returns `Alex Davidson` that works at `Google`.<br>
 <!-- TODO: Add the picture for the find command -->
 
-### Filtering persons by tags: `filter`
+### Filtering contacts by tags: `filter`
 
-Finds Contacts with tags containing the search term
+Finds Contacts with tags containing the search term.
 
 Format: `filter SEARCHTERM`
 
-* The search is case-insensitive. e.g `Friend` will match `friend`
-* Only the exact search term is searched. e.g. `Hiring Friend` will not match `Hiring`
-* Command will use Partial Search
+* The search is case-insensitive. e.g `Friend` will match `friend`.
+* Only the exact search term is searched. e.g. `Hiring Friend` will not match `Hiring`.
+* Command will use Partial Search.
 * Only contacts with tags matching with the full keyword will be returned.
-  e.g. `Fri` will return `Friend`, `Fridge` and not `Frail`, `Fragile`
+  e.g. `Fri` will return `Friend`, `Fridge` and not `Frail`, `Fragile`.
 
 Examples:
-* `filter hiring` returns `John` and `John Doe` if John and John Doe both have `hiring` tags
+* `filter hiring` returns `John` and `John Doe` if John and John Doe both have `hiring` tags.
 <!-- TODO: Add the picture for the filter command -->
 
 ### Sort Contact List: `sort`
 
-Sorts Contacts in the AddressBook in ascending or descending order
+Sorts Contacts in the AddressBook in ascending or descending order.
 
 Format: `sort SORT_TERM ORDER`
 
-* The sort-term is case-sensitive. E.g `importance` will not match `Importance`
+* The sort-term is case-sensitive. E.g `importance` will not match `Importance`.
 * Only 2 Current `SORT_TERM` is supported:
   * `name` <br>
   * `importance`<br>
@@ -162,41 +162,63 @@ Format: `sort SORT_TERM ORDER`
   * `desc` : Sorts Contacts in Descending Order
 
 Examples:
-* `sort importance desc` returns contact list from the highest importance level to the lowest importance level
+* `sort importance desc` returns contact list from the highest importance level to the lowest importance level.
 
-### Deleting a person : `delete`
+### Deleting a contact : `delete`
 
-Deletes the specified person from the address book.
+Deletes the specified contact from the address book.
 
 Format: `delete INDEX`
 
-* Deletes the person at the specified `INDEX`.
-* The index refers to the index number shown in the displayed person list.
+* Deletes the contact at the specified `INDEX`.
+* The index refers to the index number shown in the displayed contact list.
 * The index **must be a positive integer** 1, 2, 3, …​
 
 Examples:
-* `list` followed by `delete 2` deletes the 2nd person in the address book.
-* `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
+* `list` followed by `delete 2` deletes the 2nd contact in the address book.
+* `find Betsy` followed by `delete 1` deletes the 1st contact in the results of the `find` command.
 
 ### Add a meeting : `addmeeting`
 
 Adds a new meeting to the address book.
 
-Format: `addmeeting dt/DATETIME mp/PERSON_NAME [mn/NOTES]`
+Format: `addmeeting dt/DATETIME mp/CONTACT_NAME... [mn/NOTES]`
 
-* Adds a new meeting at `DATETIME` with `PERSON_NAME`
-* Multiple people can be at a meeting by specifying multiple people `mp/Alice mp/Bob`
-* `PERSON_NAME` must exist as a contact in the addressbook
-* `NOTES` is not a required field and can be omited or left blank
-* New meetings cannot have the same `DATETIME` with the same `PERSON_NAME`
+* Adds a new meeting at `DATETIME` with `CONTACT_NAME`(s).
+* Multiple people can be at a meeting by specifying multiple people `mp/Alice mp/Bob`.
+* `CONTACT_NAME` must exist as a contact in the addressbook.
+* `NOTES` is not a required field and can be omited or left blank.
+* New meetings cannot have the same `DATETIME` with the same `CONTACT_NAME`.
 
 Examples:
+* `addmeeting dt/2025-03-21 06:00 mp/Irfan Ibrahim mn/Interview for summer internship`
+* `addmeeting dt/2025-03-25 21:00 mp/Roy Balakrishnan mp/David Li`
 
-* `addmeeting dt/ 2025-03-21 06:00 mp/ Irfan Ibrahim mn/ Interview for summer internship`
-* `addmeeting dt/ 2025-03-22 18:00 mp/ Roy Balakrishnan mp/ Alex Yeoh mn/ Design review IH project`
-* `addmeeting dt/ 2025-03-23 09:00 mp/ Bernise Yu`
-* `addmeeting dt/ 2025-03-25 21:00 mp/ Roy Balakrishnan mp/ David Li`
+Format: `editmeeting INDEX [dt/DATETIME] [mp/CONTACT_NAME]... [mn/NOTES]`
 
+* Edits the meeting at the specified `INDEX`. The index refers to the index number shown in the displayed meeting list. The index **must be a positive integer** 1, 2, 3, …​
+* At least one of the optional fields must be provided.
+* Existing values will be updated to the input values.
+* When editing meeting contacts, the existing contact names will be removed i.e adding of contact names is not cumulative.
+
+Examples:
+*  `editmeeting 1 dt/2025-10-10 08:00 mn/Discuss project` Edits the meeting datetime and notes of the 1st meeting to be `2025-10-10 08:00` and `Discuss project` respectively.
+
+### Deleting a meeting : `delete`
+
+Deletes the specified meeting from the address book.
+
+Format: `deletemeeting INDEX`
+
+* Deletes the meeting at the specified `INDEX`.
+* The index refers to the index number shown in the displayed meeting list.
+* The index **must be a positive integer** 1, 2, 3, …​
+
+### Listing all meetings : `meetings`
+
+Shows a list of all meetings in the address book.
+
+Format: `meetings`
 
 ### Clearing all entries : `clear`
 
@@ -249,10 +271,14 @@ _Details coming soon ..._
 
 Action | Format, Examples
 --------|------------------
-**Add** | `add n/NAME e/EMAIL p/PHONE_NUMBER c/COMPANY j/POSITION [t/TAG]…​ i/IMPORTANCE` <br> e.g., `add n/John Doe e/johnd@example.com p/98765432 c/Apple j/Software Engineer i/High`
+**Add Contact** | `add n/NAME e/EMAIL p/PHONE_NUMBER c/COMPANY j/POSITION [t/TAG]…​ i/IMPORTANCE` <br> e.g., `add n/John Doe e/johnd@example.com p/98765432 c/Apple j/Software Engineer i/High`
 **Clear** | `clear`
-**Delete** | `delete INDEX`<br> e.g., `delete 3`
-**Edit** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​ [i/IMPORTANCE]`<br> e.g.,`edit 1 p/91234567 e/johndoe@example.com`
-**Find** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List** | `list`
+**Delete Contact** | `delete INDEX`<br> e.g., `delete 3`
+**Edit Contact** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​ [i/IMPORTANCE]`<br> e.g.,`edit 1 p/91234567 e/johndoe@example.com`
+**Find Contact** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
+**List Contacts** | `list`
+**Add Meeting** | `addmeeting dt/DATETIME mp/CONTACT_NAME... [mn/NOTES]` <br> e.g., `addmeeting dt/2025-03-21 06:00 mp/Irfan Ibrahim mn/Interview for summer internship`
+**Delete Meeting** | `deletemeeting INDEX`<br> e.g., `deletemeeting 3`
+**Edit Contact** | `editmeeting INDEX [dt/DATETIME] [mp/CONTACT_NAME]... [mn/NOTES]`<br> e.g.,`editmeeting 1 dt/2025-10-10 08:00 mn/Discuss project`
+**List meetings** | `meetings`
 **Help** | `help`

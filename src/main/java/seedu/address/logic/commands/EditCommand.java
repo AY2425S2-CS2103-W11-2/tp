@@ -7,14 +7,11 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_IMPORTANCE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_PHONE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_MEETINGS;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_PERSONS;
 
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Objects;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.CollectionUtil;
@@ -22,6 +19,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.meeting.Meeting;
 import seedu.address.model.person.Company;
 import seedu.address.model.person.Email;
 import seedu.address.model.person.Importance;
@@ -89,6 +87,20 @@ public class EditCommand extends Command {
 
         model.setPerson(personToEdit, editedPerson);
         model.updateFilteredPersonList(PREDICATE_SHOW_ALL_PERSONS);
+        // get a list of all meetings that contain this old name
+        List<Meeting> meetings = model.getFilteredMeetingList().stream().filter(meeting -> meeting.getPersonList().contains(personToEdit.getName().fullName)).toList();
+        for (Meeting meeting : meetings) {
+            EditMeetingCommand.EditMeetingDescriptor editMeetingDescriptor = new EditMeetingCommand.EditMeetingDescriptor();
+            editMeetingDescriptor.setMeetingTime(meeting.getDateTime());
+            editMeetingDescriptor.setNotes(meeting.getNotes());
+            ArrayList<String> persons = meeting.getPersonList().stream().filter(p -> !p.equals(personToEdit.getName().fullName)).collect(ArrayList::new, ArrayList::add, ArrayList::addAll);
+            persons.add(editedPerson.getName().fullName);
+            Set<String> personsToAdd = new HashSet<>(persons);
+            editMeetingDescriptor.setPeople(personsToAdd);
+            Meeting editedMeeting = EditMeetingCommand.createEditedMeeting(meeting, editMeetingDescriptor);
+            model.setMeeting(meeting, editedMeeting);
+        }
+        model.updateFilteredMeetingList(PREDICATE_SHOW_ALL_MEETINGS);
         return new CommandResult(String.format(MESSAGE_EDIT_PERSON_SUCCESS, Messages.format(editedPerson)));
     }
 

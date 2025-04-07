@@ -175,6 +175,8 @@ Format: `delete INDEX`
 * Deletes the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed contact list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* In order to successfully delete a contact, ensure that the contact has no existing meetings.
+* Any attempt to delete a contact that has an existing meeting will result in an error being shown.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd contact in the address book.

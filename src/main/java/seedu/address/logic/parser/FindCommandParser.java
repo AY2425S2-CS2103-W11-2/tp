@@ -28,6 +28,9 @@ public class FindCommandParser implements Parser<FindCommand> {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
+        if (argMultimap.getAllValues(PREFIX_COMPANY).size() > 1) {
+            throw new ParseException("Invalid Command Format! \n There can only be one Company Field");
+        }
         if (!argMultimap.getAllValues(PREFIX_COMPANY).isEmpty() && companyKeyword.equalsIgnoreCase("")) {
             throw new ParseException("Company Field cannot be empty");
         }

@@ -31,6 +31,7 @@ public class AddCommand extends Command {
             + PREFIX_POSITION + "POSITION "
             + "[" + PREFIX_TAG + "TAG]... "
             + PREFIX_IMPORTANCE + "IMPORTANCE "
+            + "\n"
             + "Example: " + COMMAND_WORD + " "
             + PREFIX_NAME + "John Doe "
             + PREFIX_EMAIL + "johnd@example.com "

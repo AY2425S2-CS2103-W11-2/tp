@@ -37,7 +37,7 @@ public class EditMeetingCommand extends Command {
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_DATETIME + "DATETIME] "
             + "[" + PREFIX_PERSONS + "CONTACT_NAME] "
-            + "[" + PREFIX_NOTES + "NOTES] "
+            + "[" + PREFIX_NOTES + "NOTES]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_DATETIME + "03-12-2025 12:00 "
             + PREFIX_PERSONS + "Alice "

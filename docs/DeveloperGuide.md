@@ -475,24 +475,6 @@ Use case ends.
     * 1a1. AddressBook shows an error message.
       Use case ends.
 
-*{More to be added}*
-
-
-**Use case 11: View help for commands**
-1. User enters command or clicks the help tab to get help for command usage
-2. AddressBook opens a seperate window to display a snippet of the user guide
-    with the commands and their usages
-
-    Use case ends.
-
-
-*{More to be added}*
-
-### Non-Functional Requirements
-
-1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-
 * 1b. AddressBook detects invalid index number
     * 1b1. AddressBook shows an error message
       Use case ends.
@@ -501,6 +483,13 @@ Use case ends.
     * 1c1. AddressBook shows an error message
       Use case ends.
 
+**Use case 11: View help for commands**
+1. User enters command or clicks the help tab to get help for command usage
+2. AddressBook opens a seperate window to display a snippet of the user guide
+    with the commands and their usages
+
+    Use case ends.
+
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
@@ -508,8 +497,8 @@ Use case ends.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. After entering a command, a user should be able to see a visible response message within 1 second
 5. Should return search results for a network size of up to 100,000 within 1 second
-7. Startup time should not exceed 2 seconds on a typical modern system
-8. The system should gracefully handle and log errors without crashing
+6. Startup time should not exceed 2 seconds on a typical modern system
+7. The system should gracefully handle and log errors without crashing
 
 ### Glossary
 

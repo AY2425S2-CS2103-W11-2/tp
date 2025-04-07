@@ -99,7 +99,7 @@ public class TypicalAddressBook {
             ab.addPerson(person);
         }
         for (Meeting meeting : getTypicalMeetings()) {
-            ab.addMeeting(meeting, ab.getPersonList());
+            ab.addMeeting(meeting, ab.getPersonList(), ab.getMeetingList());
         }
         return ab;
     }

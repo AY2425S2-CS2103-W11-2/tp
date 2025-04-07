@@ -212,7 +212,7 @@ Examples:
 *  `editmeeting 1 dt/2025-10-10 08:00 mn/Discuss project` Edits the meeting datetime and notes of the 1st meeting to be `2025-10-10 08:00` and `Discuss project` respectively.
 *  `editmeeting 1 dt/2025-10-10 08:00 mp/Alice mp/Bob` Edits the meeting replaces all the contacts of the meeting with just `Alice` and `Bob`.
 
-### Deleting a meeting : `delete`
+### Deleting a meeting : `deletemeeting`
 
 Deletes the specified meeting from the address book.
 

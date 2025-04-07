@@ -79,11 +79,11 @@ Adds a contact to the address book.
 Format: `add n/NAME e/EMAIL p/PHONE_NUMBER c/COMPANY j/POSITION [t/TAG]…​ i/IMPORTANCE`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-
 Duplicate contacts are identified by having the same (case-insensitive) name and the same phone number <br>
-A contact can have any number of tags (including 0). <br>
-Special tags: hiring - indicates that the contact is open to hiring; <br>
-**IMPORTANCE** Field can only be one of the following (Case-Insensitive): High, Medium, Low
+Names cannot be blank, and there are no restrictions on names (i.e. they can contain symbols and numbers etc.) <br>
+A person can have any number of tags (including 0) <br>
+Special tags: hiring - indicates that the contact is open to hiring <br>
+**IMPORTANCE** Field can only be one of the following: High, Medium, Low
 
 </div>
 

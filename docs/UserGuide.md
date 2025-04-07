@@ -96,7 +96,7 @@ Format: `list`
 
 ### Editing a contacts : `edit`
 
-Edits an existing contacts in the address book.
+Edits an existing contact in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​ [i/IMPORTANCE]`
 

@@ -72,7 +72,8 @@ public class Messages {
         builder.append("Date: ")
                 .append(meeting.getDateTime())
                 .append("; Persons: ");
-        meeting.getPersonList().forEach(builder::append);
+        meeting.getPersonList().forEach(p -> builder.append(p).append(", "));
+        builder.delete(builder.length() - 2, builder.length());
         builder.append("; Notes: ")
                 .append(meeting.getNotes());
         return builder.toString();

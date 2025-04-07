@@ -21,8 +21,8 @@ public class SortCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Sorts the list of students in the address book and "
             + "displays them as a list with index numbers.\n"
-            + "Parameters: FIELD (name, age, etc.) ORDER (asc/desc)\n"
-            + "Example: " + COMMAND_WORD + " priority asc";
+            + "Parameters: FIELD (name/importance) ORDER (asc/desc)\n"
+            + "Example: " + COMMAND_WORD + " importance asc";
 
     private final Comparator<Person> comparator;
     private final String field;

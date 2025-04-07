@@ -1,10 +1,10 @@
 package seedu.address.model.meeting;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 
 /**
@@ -19,16 +19,15 @@ public class MeetingTime {
                     + "2. dd/MM/yyyy HH:mm (e.g., 01/04/2024 14:30)\n"
                     + "3. MM/dd/yyyy HH:mm (e.g., 04/01/2024 14:30)";
 
-    /*
-     * The first character of the address must not be a whitespace,
-     * otherwise " " (a blank string) becomes a valid input.
-     */
-    public static final String VALIDATION_REGEX = "^(?=.*[0-9])[\\d/\\-:\\s]+$";
-
     private static final DateTimeFormatter[] ACCEPTED_FORMATS = {
             DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"),
             DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"),
             DateTimeFormatter.ofPattern("MM/dd/yyyy HH:mm")
+    };
+    private static final String[] FRIENDLY_FORMATS = {
+        "yyyy-MM-dd HH:mm (e.g. 2024-04-01 14:30)",
+        "dd/MM/yyyy HH:mm (e.g. 01/04/2024 14:30)",
+        "MM/dd/yyyy HH:mm (e.g. 04/01/2024 14:30)"
     };
 
     public final LocalDateTime meetingTime;
@@ -40,19 +39,25 @@ public class MeetingTime {
      */
     public MeetingTime(String inputTime) {
         requireNonNull(inputTime);
-        checkArgument(isValidMeetingTime(inputTime), MESSAGE_CONSTRAINTS);
         this.meetingTime = parseDateTime(inputTime);
     }
 
     private static LocalDateTime parseDateTime(String inputTime) {
-        for (DateTimeFormatter formatter : ACCEPTED_FORMATS) {
+        for (int i = 0; i < ACCEPTED_FORMATS.length; i++) {
+            DateTimeFormatter formatter = ACCEPTED_FORMATS[i];
             try {
-                return LocalDateTime.parse(inputTime, formatter);
-            } catch (Exception e) {
+                LocalDateTime parsed = LocalDateTime.parse(inputTime, formatter);
+                String reformatted = parsed.format(formatter);
+                if (!reformatted.equals(inputTime)) {
+                    throw new IllegalArgumentException("Input \"" + inputTime + "\" is not in the correct format: "
+                            + FRIENDLY_FORMATS[i]);
+                }
+                return parsed;
+            } catch (DateTimeParseException e) {
                 continue;
             }
         }
-        throw new IllegalArgumentException(MESSAGE_CONSTRAINTS);
+        throw new IllegalArgumentException("Input \"" + inputTime + "\" does not match any accepted date format");
     }
 
     /**

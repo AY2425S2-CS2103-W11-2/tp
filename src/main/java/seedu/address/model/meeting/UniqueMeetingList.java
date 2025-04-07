@@ -61,7 +61,7 @@ public class UniqueMeetingList implements Iterable<Meeting> {
      * {@code target} must exist in the list.
      * The meeting identity of {@code editedMeeting} must not be the same as another existing meeting in the list.
      */
-    public void setMeeting(Meeting target, Meeting editedMeeting, ObservableList<Person> persons, 
+    public void setMeeting(Meeting target, Meeting editedMeeting, ObservableList<Person> persons,
             ObservableList<Meeting> meetings) {
         requireAllNonNull(target, editedMeeting);
 
@@ -106,7 +106,8 @@ public class UniqueMeetingList implements Iterable<Meeting> {
     public void setMeetings(List<Meeting> meetings, UniquePersonList persons, UniqueMeetingList meetingList) {
         requireAllNonNull(persons);
         for (Meeting m : meetings) {
-            String exists = personsExist(m, persons.asUnmodifiableObservableList(), meetingList.asUnmodifiableObservableList());
+            String exists = personsExist(m, persons.asUnmodifiableObservableList(),
+                    meetingList.asUnmodifiableObservableList());
             if (exists != "true") {
                 // add custom exception here
                 throw new IllegalArgumentException(exists);

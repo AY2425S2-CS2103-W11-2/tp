@@ -133,7 +133,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The meeting identity of {@code editedMeeting} must not be the same as
      * another existing meeting in the address book.
      */
-    public void setMeeting(Meeting target, Meeting editedMeeting, ObservableList<Person> persons, 
+    public void setMeeting(Meeting target, Meeting editedMeeting, ObservableList<Person> persons,
             ObservableList<Meeting> meetingslist) {
         requireNonNull(editedMeeting);
         requireNonNull(persons);

@@ -58,7 +58,6 @@ public class CommandTestUtil {
     public static final String IMPORTANCE_DESC_AMY = " " + PREFIX_IMPORTANCE + VALID_IMPORTANCE_AMY;
     public static final String IMPORTANCE_DESC_BOB = " " + PREFIX_IMPORTANCE + VALID_IMPORTANCE_BOB;
 
-    public static final String INVALID_NAME_DESC = " " + PREFIX_NAME + "James&"; // '&' not allowed in names
     public static final String INVALID_PHONE_DESC = " " + PREFIX_PHONE + "911a"; // 'a' not allowed in phones
     public static final String INVALID_EMAIL_DESC = " " + PREFIX_EMAIL + "bob!yahoo"; // missing '@' symbol
     public static final String INVALID_COMPANY_DESC = " " + PREFIX_COMPANY; // empty string not allowed for companies

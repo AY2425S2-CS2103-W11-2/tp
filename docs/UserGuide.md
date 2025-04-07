@@ -15,15 +15,15 @@ InternHive (IH) is a **desktop app targeting students for managing your industry
 1. Ensure you have Java `17` or above installed in your Computer.<br>
    **Mac users:** Ensure you have the precise JDK version prescribed [here](https://se-education.org/guides/tutorials/javaInstallationMac.html).
 
-1. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
+2. Download the latest `.jar` file from [here](https://github.com/se-edu/addressbook-level3/releases).
 
-1. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
+3. Copy the file to the folder you want to use as the _home folder_ for your AddressBook.
 
-1. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InternHive.jar` command to run the application.<br>
+4. Open a command terminal, `cd` into the folder you put the jar file in, and use the `java -jar InternHive.jar` command to run the application.<br>
    A GUI similar to the below should appear in a few seconds. Note how the app contains some sample data.<br>
    ![Ui](images/InternHiveUi.png)
 
-1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
+5. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
    * `list` : Lists all contacts.
@@ -36,7 +36,7 @@ InternHive (IH) is a **desktop app targeting students for managing your industry
 
    * `exit` : Exits the app.
 
-1. Refer to the [Features](#features) below for details of each command.
+6. Refer to the [Features](#features) below for details of each command.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -44,13 +44,14 @@ InternHive (IH) is a **desktop app targeting students for managing your industry
 
 <div markdown="block" class="alert alert-info">
 
-**:information_source: Notes about the command format:**<br>
+> [!Note]
+> Notes about the command format
 
 * Words in `UPPER_CASE` are the parameters to be supplied by the user.<br>
   e.g. in `add n/NAME`, `NAME` is a parameter which can be used as `add n/John Doe`.
 
 * Items in square brackets are optional.<br>
-  e.g `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
+  e.g. `n/NAME [t/TAG]` can be used as `n/John Doe t/friend` or as `n/John Doe`.
 
 * Items with `…`​ after them can be used multiple times including zero times.<br>
   e.g. `[t/TAG]…​` can be used as ` ` (i.e. 0 times), `t/friend`, `t/friend t/family` etc.
@@ -66,7 +67,7 @@ InternHive (IH) is a **desktop app targeting students for managing your industry
 
 ### Viewing help : `help`
 
-Opens a seperate window to show a snippet of the user guide detailing all the available commands, format and example usage.
+Opens a separate window to show a snippet of the user guide detailing all the available commands, format and example usage.
 
 Format: `help`
 
@@ -102,12 +103,12 @@ Format: `list`
 
 Edits an existing contact in the address book.
 
-Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​ [i/IMPORTANCE]`
+Format: `edit INDEX [n/NAME] [e/EMAIL] [p/PHONE] [c/COMPANY] [j/POSITION] [t/TAG]…​ [i/IMPORTANCE]`
 
 * Edits the contact at the specified `INDEX`. The index refers to the index number shown in the displayed contact list. The index **must be a positive integer** 1, 2, 3, …​
 * At least one of the optional fields must be provided.
 * Existing values will be updated to the input values.
-* When editing tags, the existing tags of the contact will be removed i.e adding of tags is not cumulative.
+* When editing tags, the existing tags of the contact will be removed i.e. adding of tags is not cumulative.
 * You can remove all the contact’s tags by typing `t/` without
     specifying any tags after it.
 
@@ -121,7 +122,7 @@ Finds Contacts whose names contain any of the given keywords.
 
 Format: `find KEYWORD [MORE_KEYWORDS] [c/COMPANY]`
 
-* The search is case-insensitive. e.g `hans` will match `Hans`.
+* The search is case-insensitive. e.g. `hans` will match `Hans`.
 * The order of the keywords matters. e.g. `Hans Bo` will not match `Bo Hans`.
 * Only the name is searched if no other options are provided.
 * Command will use Partial Search.
@@ -142,7 +143,7 @@ Finds Contacts with tags containing the search term.
 
 Format: `filter SEARCHTERM`
 
-* The search is case-insensitive. e.g `Friend` will match `friend`.
+* The search is case-insensitive. e.g. `Friend` will match `friend`.
 * Only the exact search term is searched. e.g. `Hiring Friend` will not match `Hiring`.
 * Command will use Partial Search.
 * Only contacts with tags matching with the full keyword will be returned.
@@ -158,7 +159,7 @@ Sorts Contacts in the AddressBook in ascending or descending order.
 
 Format: `sort SORT_TERM ORDER`
 
-* The sort-term is case-sensitive. E.g `importance` will not match `Importance`.
+* The sort-term is case-sensitive. E.g. `importance` will not match `Importance`.
 * Only 2 Current `SORT_TERM` is supported:
   * `name` <br>
   * `importance`<br>
@@ -259,7 +260,7 @@ AddressBook data are saved automatically as a JSON file `[JAR file location]/dat
 
 <div markdown="span" class="alert alert-warning">:exclamation: **Caution:**
 If your changes to the data file makes its format invalid, AddressBook will discard all data and start with an empty data file at the next run. Hence, it is recommended to take a backup of the file before editing it.<br>
-Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside of the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
+Furthermore, certain edits can cause the AddressBook to behave in unexpected ways (e.g., if a value entered is outside the acceptable range). Therefore, edit the data file only if you are confident that you can update it correctly.
 </div>
 
 ### Archiving data files `[coming in v2.0]`
@@ -271,7 +272,7 @@ _Details coming soon ..._
 ## FAQ
 
 **Q**: How do I transfer my data to another Computer?<br>
-**A**: Install the app in the other computer and overwrite the empty data file it creates with the file that contains the data of your previous AddressBook home folder.
+**A**: Go into the directory of where your jar file is located at. Zip up the directory. Place the zipped directory in your other computer (Via Email,FTP etc.). Unzip the zipped folder and run the jar file on the other computer.
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -284,16 +285,18 @@ _Details coming soon ..._
 
 ## Command summary
 
-Action | Format, Examples
---------|------------------
-**Add Contact** | `add n/NAME e/EMAIL p/PHONE_NUMBER c/COMPANY j/POSITION [t/TAG]…​ i/IMPORTANCE` <br> e.g., `add n/John Doe e/johnd@example.com p/98765432 c/Apple j/Software Engineer i/High`
-**Clear** | `clear`
-**Delete Contact** | `delete INDEX`<br> e.g., `delete 3`
-**Edit Contact** | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​ [i/IMPORTANCE]`<br> e.g.,`edit 1 p/91234567 e/johndoe@example.com`
-**Find Contact** | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`
-**List Contacts** | `list`
-**Add Meeting** | `addmeeting dt/DATETIME mp/CONTACT_NAME... [mn/NOTES]` <br> e.g., `addmeeting dt/2025-03-21 06:00 mp/Irfan Ibrahim mn/Interview for summer internship`
-**Delete Meeting** | `deletemeeting INDEX`<br> e.g., `deletemeeting 3`
-**Edit Meeting** | `editmeeting INDEX [dt/DATETIME] [mp/CONTACT_NAME]... [mn/NOTES]`<br> e.g.,`editmeeting 1 dt/2025-10-10 08:00 mn/Discuss project`
-**List meetings** | `meetings`
-**Help** | `help`
+| Action             | Format, Examples                                                                                                                                                              |
+|--------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Add Contact**    | `add n/NAME e/EMAIL p/PHONE_NUMBER c/COMPANY j/POSITION [t/TAG]…​ i/IMPORTANCE` <br> e.g., `add n/John Doe e/johnd@example.com p/98765432 c/Apple j/Software Engineer i/High` |
+| **Clear**          | `clear`                                                                                                                                                                       |
+| **Delete Contact** | `delete INDEX`<br> e.g., `delete 3`                                                                                                                                           |
+| **Edit Contact**   | `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​ [i/IMPORTANCE]`<br> e.g.,`edit 1 p/91234567 e/johndoe@example.com`                                             |
+| **Find Contact**   | `find KEYWORD [MORE_KEYWORDS]`<br> e.g., `find James Jake`                                                                                                                    |
+| **Filter Contact** | `filter SEARCHTERM` <br> e.g., `filter hiring`                                                                                                                                |
+| **Sort Contact**   | `sort SORT_TERM ORDER` <br> e.g., `sort importance desc`                                                                                                                      |
+| **List Contacts**  | `list`                                                                                                                                                                        |
+| **Add Meeting**    | `addmeeting dt/DATETIME mp/CONTACT_NAME... [mn/NOTES]` <br> e.g., `addmeeting dt/2025-03-21 06:00 mp/Irfan Ibrahim mn/Interview for summer internship`                        |
+| **Delete Meeting** | `deletemeeting INDEX`<br> e.g., `deletemeeting 3`                                                                                                                             |
+| **Edit Meeting**   | `editmeeting INDEX [dt/DATETIME] [mp/CONTACT_NAME]... [mn/NOTES]`<br> e.g.,`editmeeting 1 dt/2025-10-10 08:00 mn/Discuss project`                                             |
+| **List meetings**  | `meetings`                                                                                                                                                                    |
+| **Help**           | `help`                                                                                                                                                                        |

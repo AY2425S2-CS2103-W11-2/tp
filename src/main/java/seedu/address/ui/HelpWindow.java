@@ -45,7 +45,7 @@ public class HelpWindow extends UiPart<Stage> {
         InputStream resourcesStream = getClass().getResourceAsStream("/docs/UserGuide.md");
         Scanner sc = null;
         try {
-            sc = new Scanner(resourcesStream);
+            sc = new Scanner(resourcesStream, "UTF-8");
         } catch (Exception e) {
             System.out.println("User guide has moved??");
         }

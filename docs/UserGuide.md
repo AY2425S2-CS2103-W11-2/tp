@@ -291,6 +291,6 @@ Action | Format, Examples
 **List Contacts** | `list`
 **Add Meeting** | `addmeeting dt/DATETIME mp/CONTACT_NAME... [mn/NOTES]` <br> e.g., `addmeeting dt/2025-03-21 06:00 mp/Irfan Ibrahim mn/Interview for summer internship`
 **Delete Meeting** | `deletemeeting INDEX`<br> e.g., `deletemeeting 3`
-**Edit Contact** | `editmeeting INDEX [dt/DATETIME] [mp/CONTACT_NAME]... [mn/NOTES]`<br> e.g.,`editmeeting 1 dt/2025-10-10 08:00 mn/Discuss project`
+**Edit Meeting** | `editmeeting INDEX [dt/DATETIME] [mp/CONTACT_NAME]... [mn/NOTES]`<br> e.g.,`editmeeting 1 dt/2025-10-10 08:00 mn/Discuss project`
 **List meetings** | `meetings`
 **Help** | `help`

@@ -159,7 +159,8 @@ public class UniqueMeetingList implements Iterable<Meeting> {
         System.out.println("personsExist " + meeting.getPersonList());
         // check if empty string in persons
         if (meeting.getPersonList().isEmpty() || meeting.getPersonList().contains("")) {
-            return "Contact name after mp/ prefix cannot be left empty. Please check for empty contact name field(s) (e.g. mp/  )";
+            return "Contact name after mp/ prefix cannot be left empty. "
+                + "Please retry the command without any empty contact name field(s) (e.g. mp/  )";
         }
         // check if every person in the meeting is in the address book
         for (String p : meeting.getPersonList()) {

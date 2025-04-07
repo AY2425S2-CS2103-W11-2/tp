@@ -196,10 +196,11 @@ public class ParserUtil {
     public static MeetingTime parseMeetingTime(String dateTime) throws ParseException {
         requireNonNull(dateTime);
         String trimmedDateTime = dateTime.trim();
-        if (!MeetingTime.isValidMeetingTime(trimmedDateTime)) {
-            throw new ParseException(MeetingTime.MESSAGE_CONSTRAINTS);
+        try {
+            return new MeetingTime(trimmedDateTime);
+        } catch (IllegalArgumentException e) {
+            throw new ParseException(e.getMessage());
         }
-        return new MeetingTime(trimmedDateTime);
     }
 
     /**

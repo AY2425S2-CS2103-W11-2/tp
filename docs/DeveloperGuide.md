@@ -325,12 +325,12 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 * 1a. The name of the contact provided is an exact (case-insensitive) duplicate of a name already in the contact list
    * 1a1. AddressBook shows an error message.
-  
+ 
    Use case ends.
 
 * 1b. The name, email and/or phone number of the contact provided is invalid
    * 1b. AddressBook shows an error message.
-  
+ 
   Use case ends.
 
 
@@ -546,7 +546,7 @@ testers are expected to do more *exploratory* testing.
 
    1. Test case: `delete 0`<br>
       Expected: No contact is deleted. Error details shown in the status message. Status bar remains the same.
-   
+
    1. Test case: `delete 1` but contact at index 1 has existing meetings<br>
       Expected: No contact is deleted. Error details shown in the status message. Status bar remains the same.
 

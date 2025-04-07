@@ -78,10 +78,12 @@ Adds a contact to the address book.
 Format: `add n/NAME e/EMAIL p/PHONE_NUMBER c/COMPANY j/POSITION [t/TAG]…​ i/IMPORTANCE`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
-Duplicate names (case-insensitive) are not allowed. <br>
+
+Duplicate contacts are identified by having the same (case-insensitive) name and the same phone number <br>
 A contact can have any number of tags (including 0). <br>
 Special tags: hiring - indicates that the contact is open to hiring; <br>
 **IMPORTANCE** Field can only be one of the following (Case-Insensitive): High, Medium, Low
+
 </div>
 
 Examples:

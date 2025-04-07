@@ -156,10 +156,15 @@ public class UniqueMeetingList implements Iterable<Meeting> {
      * Returns "true" if {@code meeting} contains people who exist in the addressbook.
      */
     private String personsExist(Meeting meeting, ObservableList<Person> persons) {
+        System.out.println("personsExist " + meeting.getPersonList());
+        // check if empty string in persons
+        if (meeting.getPersonList().isEmpty() || meeting.getPersonList().contains("")) {
+            return "Contact field cannot be empty.";
+        }
         // check if every person in the meeting is in the address book
         for (String p : meeting.getPersonList()) {
             if (!persons.stream().anyMatch(person -> person.getName().toString().equals(p))) {
-                return "Person " + p + " is not in the address book.";
+                return "Contact " + p + " is not in the address book.";
             }
         }
         return "true";

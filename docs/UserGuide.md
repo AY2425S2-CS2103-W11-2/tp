@@ -94,6 +94,8 @@ Shows a list of all contacts in the address book.
 
 Format: `list`
 
+* Extraneous parameters are accepted but will be ignored
+
 ### Editing a contacts : `edit`
 
 Edits an existing contact in the address book.

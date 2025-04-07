@@ -224,7 +224,7 @@ Format: `deletemeeting INDEX`
 
 ### Listing all meetings : `meetings`
 
-Shows a list of all meetings in the address book.
+Shows a list of all meetings in the address book. Currently, all meetings will be listed by default. This feature would be more useful in the future when other features such as filtering meetings have been implemented. 
 
 Format: `meetings`
 

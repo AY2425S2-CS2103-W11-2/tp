@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-InternHive (IH) is a **desktop app for managing your industry contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InternHive can get your contact management tasks done faster than traditional GUI apps.
+InternHive (IH) is a **desktop app targeting students for managing your industry contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InternHive can get your contact management tasks done faster than traditional GUI apps.
 
 * Table of Contents
 {:toc}

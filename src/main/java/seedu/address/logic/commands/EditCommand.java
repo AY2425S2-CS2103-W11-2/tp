@@ -76,8 +76,16 @@ public class EditCommand extends Command {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
+        if (lastShownList.size() == 0) {
+            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX_NONE);
+        }
+
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            if (lastShownList.size() == 1) {
+                throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX_SINGLE);
+            }
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                lastShownList.size()));
         }
 
         Person personToEdit = lastShownList.get(index.getZeroBased());

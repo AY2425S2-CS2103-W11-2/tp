@@ -319,18 +319,19 @@ Priorities: High (must have) - `* * *`, Medium (nice to have) - `* *`, Low (unli
 
 1.  User enters the command to add a contact into the input field, along with all details following the specified command syntax
 2.  AddressBook shows a success message containing the details of the added contact
-
     Use case ends.
 
 **Extensions**
 
 * 1a. The name of the contact provided is an exact (case-insensitive) duplicate of a name already in the contact list
    * 1a1. AddressBook shows an error message.
+ 
    Use case ends.
 
 * 1b. The name, email and/or phone number of the contact provided is invalid
-   * 1bAddressBook shows an error message.
-   Use case ends.
+   * 1b. AddressBook shows an error message.
+ 
+  Use case ends.
 
 
 **Use case 2: Delete a contact**
@@ -475,24 +476,6 @@ Use case ends.
     * 1a1. AddressBook shows an error message.
       Use case ends.
 
-*{More to be added}*
-
-
-**Use case 11: View help for commands**
-1. User enters command or clicks the help tab to get help for command usage
-2. AddressBook opens a seperate window to display a snippet of the user guide
-    with the commands and their usages
-
-    Use case ends.
-
-
-*{More to be added}*
-
-### Non-Functional Requirements
-
-1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
-2. Should be able to hold up to 1000 persons without a noticeable sluggishness in performance for typical usage.
-
 * 1b. AddressBook detects invalid index number
     * 1b1. AddressBook shows an error message
       Use case ends.
@@ -501,6 +484,13 @@ Use case ends.
     * 1c1. AddressBook shows an error message
       Use case ends.
 
+**Use case 11: View help for commands**
+1. User enters command or clicks the help tab to get help for command usage
+2. AddressBook opens a seperate window to display a snippet of the user guide
+    with the commands and their usages
+
+    Use case ends.
+
 ### Non-Functional Requirements
 
 1. Should work on any _mainstream OS_ as long as it has Java `17` or above installed.
@@ -508,8 +498,8 @@ Use case ends.
 3. A user with above average typing speed for regular English text (i.e. not code, not system admin commands) should be able to accomplish most of the tasks faster using commands than using the mouse.
 4. After entering a command, a user should be able to see a visible response message within 1 second
 5. Should return search results for a network size of up to 100,000 within 1 second
-7. Startup time should not exceed 2 seconds on a typical modern system
-8. The system should gracefully handle and log errors without crashing
+6. Startup time should not exceed 2 seconds on a typical modern system
+7. The system should gracefully handle and log errors without crashing
 
 ### Glossary
 
@@ -545,13 +535,11 @@ testers are expected to do more *exploratory* testing.
    1. Re-launch the app by double-clicking the jar file.<br>
        Expected: The most recent window size and location is retained.
 
-1. _{ more test cases …​ }_
-
 ### Deleting a contact
 
 1. Deleting a contact while all contacts are being shown
 
-   1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list.
+   1. Prerequisites: List all contacts using the `list` command. Multiple contacts in the list. Contact cannot have existing meetings.
 
    1. Test case: `delete 1`<br>
       Expected: First contact is deleted from the list. Details of the deleted contact shown in the status message. Timestamp in the status bar is updated.
@@ -559,15 +547,14 @@ testers are expected to do more *exploratory* testing.
    1. Test case: `delete 0`<br>
       Expected: No contact is deleted. Error details shown in the status message. Status bar remains the same.
 
+   1. Test case: `delete 1` but contact at index 1 has existing meetings<br>
+      Expected: No contact is deleted. Error details shown in the status message. Status bar remains the same.
+
    1. Other incorrect delete commands to try: `delete`, `delete x`, `...` (where x is larger than the list size)<br>
       Expected: Similar to previous.
-
-1. _{ more test cases …​ }_
 
 ### Saving data
 
 1. Dealing with missing/corrupted data files
 
    1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
-
-1. _{ more test cases …​ }_

@@ -3,7 +3,7 @@ layout: page
 title: User Guide
 ---
 
-InternHive (IH) is a **desktop app for managing your industry contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InternHive can get your contact management tasks done faster than traditional GUI apps.
+InternHive (IH) is a **desktop app targeting students for managing your industry contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, InternHive can get your contact management tasks done faster than traditional GUI apps.
 
 * Table of Contents
 {:toc}
@@ -78,10 +78,12 @@ Adds a contact to the address book.
 Format: `add n/NAME e/EMAIL p/PHONE_NUMBER c/COMPANY j/POSITION [t/TAG]…​ i/IMPORTANCE`
 
 <div markdown="span" class="alert alert-primary">:bulb: **Tip:**
+
 Duplicate contacts are identified by having the same (case-insensitive) name and the same phone number <br>
-A person can have any number of tags (including 0) <br>
-Special tags: hiring - indicates that the contact is open to hiring <br>
-**IMPORTANCE** Field can only be one of the following: High, Medium, Low
+A contact can have any number of tags (including 0). <br>
+Special tags: hiring - indicates that the contact is open to hiring; <br>
+**IMPORTANCE** Field can only be one of the following (Case-Insensitive): High, Medium, Low
+
 </div>
 
 Examples:
@@ -94,9 +96,11 @@ Shows a list of all contacts in the address book.
 
 Format: `list`
 
+* Extraneous parameters are accepted but will be ignored
+
 ### Editing a contacts : `edit`
 
-Edits an existing contacts in the address book.
+Edits an existing contact in the address book.
 
 Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​ [i/IMPORTANCE]`
 
@@ -124,11 +128,12 @@ Format: `find KEYWORD [MORE_KEYWORDS] [c/COMPANY]`
 * Only Contacts matching with the full keyword will be returned.
   e.g. `Hans Bo` will return `Hans Bother`, `Hans Bo` and not `Hans Gruber`, `Bo Yang`.
 * If the Company Parameter is provided, it will search for a contact that matches **BOTH** the `KEYWORD` provided and the `COMPANY` Provided.
+  * There can only be **ONE** `COMPANY` Parameter provided
 
 Examples:
 * `find John` returns `john` and `John Doe`.
 * `find alex david` returns `Alex David`, `Alex Davidson`.<br>
-* `find alex david c\Google` returns `Alex Davidson` that works at `Google`.<br>
+* `find alex david c/Google` returns `Alex Davidson` that works at `Google`.<br>
 <!-- TODO: Add the picture for the find command -->
 
 ### Filtering contacts by tags: `filter`
@@ -173,6 +178,8 @@ Format: `delete INDEX`
 * Deletes the contact at the specified `INDEX`.
 * The index refers to the index number shown in the displayed contact list.
 * The index **must be a positive integer** 1, 2, 3, …​
+* In order to successfully delete a contact, ensure that the contact has no existing meetings.
+* Any attempt to delete a contact that has an existing meeting will result in an error being shown.
 
 Examples:
 * `list` followed by `delete 2` deletes the 2nd contact in the address book.
@@ -212,7 +219,7 @@ Examples:
 *  `editmeeting 1 dt/2025-10-10 08:00 mn/Discuss project` Edits the meeting datetime and notes of the 1st meeting to be `2025-10-10 08:00` and `Discuss project` respectively.
 *  `editmeeting 1 dt/2025-10-10 08:00 mp/Alice mp/Bob` Edits the meeting replaces all the contacts of the meeting with just `Alice` and `Bob`.
 
-### Deleting a meeting : `delete`
+### Deleting a meeting : `deletemeeting`
 
 Deletes the specified meeting from the address book.
 
@@ -224,7 +231,7 @@ Format: `deletemeeting INDEX`
 
 ### Listing all meetings : `meetings`
 
-Shows a list of all meetings in the address book.
+Shows a list of all meetings in the address book. Currently, all meetings will be listed by default. This feature would be more useful in the future when other features such as filtering meetings have been implemented.
 
 Format: `meetings`
 
@@ -287,6 +294,6 @@ Action | Format, Examples
 **List Contacts** | `list`
 **Add Meeting** | `addmeeting dt/DATETIME mp/CONTACT_NAME... [mn/NOTES]` <br> e.g., `addmeeting dt/2025-03-21 06:00 mp/Irfan Ibrahim mn/Interview for summer internship`
 **Delete Meeting** | `deletemeeting INDEX`<br> e.g., `deletemeeting 3`
-**Edit Contact** | `editmeeting INDEX [dt/DATETIME] [mp/CONTACT_NAME]... [mn/NOTES]`<br> e.g.,`editmeeting 1 dt/2025-10-10 08:00 mn/Discuss project`
+**Edit Meeting** | `editmeeting INDEX [dt/DATETIME] [mp/CONTACT_NAME]... [mn/NOTES]`<br> e.g.,`editmeeting 1 dt/2025-10-10 08:00 mn/Discuss project`
 **List meetings** | `meetings`
 **Help** | `help`

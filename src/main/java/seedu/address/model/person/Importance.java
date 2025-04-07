@@ -10,7 +10,7 @@ import static seedu.address.commons.util.AppUtil.checkArgument;
 public class Importance {
 
     public static final String MESSAGE_CONSTRAINTS = "Importance should only contain one of the following: \n"
-            + "LOW or MEDIUM or HIGH";
+            + "Low or Medium or High (Case-Insensitive) \n";
 
     /*
      * The first character of the Importance Field must not be a whitespace,
@@ -30,7 +30,7 @@ public class Importance {
     public Importance(String importance) {
         requireNonNull(importance);
         checkArgument(isValidImportance(importance), MESSAGE_CONSTRAINTS);
-        value = importance.toLowerCase();
+        value = capitalizeFirst(importance.toLowerCase());
     }
 
     /**
@@ -49,6 +49,14 @@ public class Importance {
         }
         return false;
     }
+
+    private static String capitalizeFirst(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
+        }
+        return input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
+    }
+
 
     @Override
     public String toString() {

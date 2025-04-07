@@ -204,8 +204,8 @@ Format: `addmeeting dt/DATETIME mp/CONTACT_NAME... [mn/NOTES]`
 
 Examples:
 * `addmeeting dt/2025-03-21 06:00 mp/Irfan Ibrahim mn/Interview for summer internship`
-* `addmeeting dt/25-03-2020 21:00 mp/Roy Balakrishnan mp/David Li`
-* `addmeeting dt/12-31-2024 21:00 mp/Roy Balakrishnan mp/David Li mn/Interview for Scholarship`
+* `addmeeting dt/20/10/2020 21:00 mp/Roy Balakrishnan mp/David Li`
+* `addmeeting dt/09/28/2024 14:00 mp/Roy Balakrishnan mp/David Li mn/Interview for Scholarship`
 
 ### Edit a meeting : `editmeeting`
 Format: `editmeeting INDEX [dt/DATETIME] [mp/CONTACT_NAME]... [mn/NOTES]`

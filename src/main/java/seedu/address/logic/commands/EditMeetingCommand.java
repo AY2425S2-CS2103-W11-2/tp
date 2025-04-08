@@ -69,8 +69,16 @@ public class EditMeetingCommand extends Command {
         requireNonNull(model);
         List<Meeting> lastShownList = model.getFilteredMeetingList();
 
+        if (lastShownList.size() == 0) {
+            throw new CommandException(Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX_NONE);
+        }
+
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX);
+            if (lastShownList.size() == 1) {
+                throw new CommandException(Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX_SINGLE);
+            }
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX,
+                lastShownList.size()));
         }
 
         Meeting meetingToEdit = lastShownList.get(index.getZeroBased());

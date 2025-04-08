@@ -45,8 +45,7 @@ public class MeetingCard extends UiPart<Region> {
         id.setText(displayedIndex + ". ");
         meetingTime.setText(meeting.getDateTime().toString());
         notes.setText(meeting.getNotes().value);
-        meeting.getPersonList().stream().forEach(person ->
-        {
+        meeting.getPersonList().stream().forEach(person -> {
             Label personLabel = new Label(person);
             personLabel.setMaxWidth(300);
             personLabel.setMinHeight(Region.USE_PREF_SIZE);

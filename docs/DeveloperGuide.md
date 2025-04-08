@@ -559,4 +559,7 @@ testers are expected to do more *exploratory* testing.
 
 1. Dealing with missing/corrupted data files
 
-   1. _{explain how to simulate a missing/corrupted file, and the expected behavior}_
+   1a. if the data file is corrupted, delete the corrupted `addressbook.json` file in the `data` folder and a generic, empty version will be created on startup
+   
+   1b. if the data file is missing, a generic, empty version will be created on startup by default
+

@@ -57,7 +57,7 @@ public class AddressBook implements ReadOnlyAddressBook {
      * {@code meetings} must not contain duplicate meetings.
      */
     public void setMeetings(List<Meeting> meetings) {
-        this.meetings.setMeetings(meetings, this.persons);
+        this.meetings.setMeetings(meetings, this.persons, this.meetings);
     }
 
     /**
@@ -121,10 +121,10 @@ public class AddressBook implements ReadOnlyAddressBook {
      * Adds a meeting to the address book.
      * The meeting must not already exist in the address book.
      */
-    public void addMeeting(Meeting m, ObservableList<Person> persons) {
+    public void addMeeting(Meeting m, ObservableList<Person> persons, ObservableList<Meeting> meetingslist) {
         requireNonNull(m);
         requireNonNull(persons);
-        meetings.add(m, persons);
+        meetings.add(m, persons, meetingslist);
     }
 
     /**
@@ -133,11 +133,12 @@ public class AddressBook implements ReadOnlyAddressBook {
      * The meeting identity of {@code editedMeeting} must not be the same as
      * another existing meeting in the address book.
      */
-    public void setMeeting(Meeting target, Meeting editedMeeting, ObservableList<Person> persons) {
+    public void setMeeting(Meeting target, Meeting editedMeeting, ObservableList<Person> persons,
+            ObservableList<Meeting> meetingslist) {
         requireNonNull(editedMeeting);
         requireNonNull(persons);
 
-        meetings.setMeeting(target, editedMeeting, persons);
+        meetings.setMeeting(target, editedMeeting, persons, meetingslist);
     }
 
     /**

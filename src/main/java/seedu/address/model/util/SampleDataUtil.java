@@ -63,7 +63,7 @@ public class SampleDataUtil {
             sampleAb.addPerson(samplePerson);
         }
         for (Meeting sampleMeeting : getSampleMeetings()) {
-            sampleAb.addMeeting(sampleMeeting, sampleAb.getPersonList());
+            sampleAb.addMeeting(sampleMeeting, sampleAb.getPersonList(), sampleAb.getMeetingList());
         }
         return sampleAb;
     }

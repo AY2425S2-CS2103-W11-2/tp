@@ -65,7 +65,7 @@ class JsonSerializableAddressBook {
             if (addressBook.hasMeeting(meeting)) {
                 throw new IllegalValueException(MESSAGE_DUPLICATE_MEETING);
             }
-            addressBook.addMeeting(meeting, addressBook.getPersonList());
+            addressBook.addMeeting(meeting, addressBook.getPersonList(), addressBook.getMeetingList());
         }
         return addressBook;
     }

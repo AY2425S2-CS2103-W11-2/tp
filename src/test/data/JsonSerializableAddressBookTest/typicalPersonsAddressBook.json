@@ -58,14 +58,6 @@
     "importance" : "High"
   } ],
   "meetings" : [ {
-    "meetingTime" : "2025-12-30 14:00",
-    "persons" : [ "Benson Meier", "Alice Pauline", "Daniel Meier" ],
-    "notes" : "Discuss about the new project"
-  }, {
-    "meetingTime" : "2025-12-15 15:20",
-    "persons" : [ "Daniel Meier" ],
-    "notes" : "Interview for summer internship"
-  }, {
     "meetingTime" : "2025-02-13 10:00",
     "persons" : [ "Daniel Meier", "George Best" ],
     "notes" : "Consultation at Singapore Coding Conference"

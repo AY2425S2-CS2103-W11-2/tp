@@ -36,17 +36,18 @@ public class EditMeetingCommand extends Command {
             + "Existing values will be overwritten by the input values.\n"
             + "Parameters: INDEX (must be a positive integer) "
             + "[" + PREFIX_DATETIME + "DATETIME] "
-            + "[" + PREFIX_PERSONS + "PERSONS] "
-            + "[" + PREFIX_NOTES + "NOTES] "
+            + "[" + PREFIX_PERSONS + "CONTACT_NAME] "
+            + "[" + PREFIX_NOTES + "NOTES]\n"
             + "Example: " + COMMAND_WORD + " 1 "
             + PREFIX_DATETIME + "03-12-2025 12:00 "
             + PREFIX_PERSONS + "Alice "
             + PREFIX_PERSONS + "Bob "
             + PREFIX_NOTES + "Settle admin matters";
 
-    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Person: %1$s";
+    public static final String MESSAGE_EDIT_PERSON_SUCCESS = "Edited Contact: %1$s";
     public static final String MESSAGE_NOT_EDITED = "At least one field to edit must be provided.";
     public static final String MESSAGE_DUPLICATE_MEETING = "This meeting already exists in the address book";
+    public static final String MESSAGE_EMPTY_PERSONS = "Meeting requires at least one person";
 
     private final Index index;
     private final EditMeetingDescriptor editMeetingDescriptor;
@@ -68,8 +69,16 @@ public class EditMeetingCommand extends Command {
         requireNonNull(model);
         List<Meeting> lastShownList = model.getFilteredMeetingList();
 
+        if (lastShownList.size() == 0) {
+            throw new CommandException(Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX_NONE);
+        }
+
         if (index.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX);
+            if (lastShownList.size() == 1) {
+                throw new CommandException(Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX_SINGLE);
+            }
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_MEETING_DISPLAYED_INDEX,
+                lastShownList.size()));
         }
 
         Meeting meetingToEdit = lastShownList.get(index.getZeroBased());
@@ -77,6 +86,9 @@ public class EditMeetingCommand extends Command {
 
         if (!meetingToEdit.isSameMeeting(editedMeeting) && model.hasMeeting(editedMeeting)) {
             throw new CommandException(MESSAGE_DUPLICATE_MEETING);
+        }
+        if (editedMeeting.getPersonList().isEmpty()) {
+            throw new CommandException(MESSAGE_EMPTY_PERSONS);
         }
 
         model.setMeeting(meetingToEdit, editedMeeting);
@@ -88,7 +100,7 @@ public class EditMeetingCommand extends Command {
      * Creates and returns a {@code Person} with the details of {@code personToEdit}
      * edited with {@code editPersonDescriptor}.
      */
-    private static Meeting createEditedMeeting(Meeting meetingToEdit, EditMeetingDescriptor editMeetingDescriptor) {
+    public static Meeting createEditedMeeting(Meeting meetingToEdit, EditMeetingDescriptor editMeetingDescriptor) {
         assert meetingToEdit != null;
 
         MeetingTime updatedDt = editMeetingDescriptor.getMeetingTime().orElse(meetingToEdit.getDateTime());
@@ -117,7 +129,7 @@ public class EditMeetingCommand extends Command {
     public String toString() {
         return new ToStringBuilder(this)
                 .add("index", index)
-                .add("editPersonDescriptor", editMeetingDescriptor)
+                .add("editMeetingDescriptor", editMeetingDescriptor)
                 .toString();
     }
 
@@ -146,7 +158,6 @@ public class EditMeetingCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            System.out.println("isAnyFieldEdited " + people);
             return CollectionUtil.isAnyNonNull(meetingTime, notes, people);
         }
 
@@ -171,7 +182,6 @@ public class EditMeetingCommand extends Command {
          * A defensive copy of {@code people} is used internally.
          */
         public void setPeople(Set<String> people) {
-            System.out.println("setPeople " + people);
             this.people = (people != null) ? new HashSet<>(people) : null;
         }
 
@@ -181,7 +191,6 @@ public class EditMeetingCommand extends Command {
          * Returns {@code Optional#empty()} if {@code people} is null.
          */
         public Optional<Set<String>> getPeople() {
-            System.out.println("getPeople " + people);
             return (people != null) ? Optional.of(Collections.unmodifiableSet(people)) : Optional.empty();
         }
 

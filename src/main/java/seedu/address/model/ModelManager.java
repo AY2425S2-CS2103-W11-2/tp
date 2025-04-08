@@ -131,14 +131,14 @@ public class ModelManager implements Model {
 
     @Override
     public void addMeeting(Meeting meeting) {
-        addressBook.addMeeting(meeting, filteredPersons);
+        addressBook.addMeeting(meeting, filteredPersons, filteredMeetings);
     }
 
     @Override
     public void setMeeting(Meeting target, Meeting editedMeeting) {
         requireAllNonNull(target, editedMeeting);
 
-        addressBook.setMeeting(target, editedMeeting, filteredPersons);
+        addressBook.setMeeting(target, editedMeeting, filteredPersons, filteredMeetings);
     }
 
     @Override

@@ -9,6 +9,7 @@ import seedu.address.commons.util.ToStringBuilder;
 import seedu.address.logic.Messages;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.meeting.Meeting;
 import seedu.address.model.person.Person;
 
 /**
@@ -23,7 +24,8 @@ public class DeleteCommand extends Command {
             + "Parameters: INDEX (must be a positive integer smaller than the size of the contact list)\n"
             + "Example: " + COMMAND_WORD + " 1";
 
-    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Person: %1$s";
+    public static final String MESSAGE_DELETE_PERSON_SUCCESS = "Deleted Contact: %1$s";
+    public static final String MESSAGE_PERSON_HAS_MEETING = "Unable to delete contact. Contact has existing meeting(s)";
 
     private final Index targetIndex;
 
@@ -36,11 +38,25 @@ public class DeleteCommand extends Command {
         requireNonNull(model);
         List<Person> lastShownList = model.getFilteredPersonList();
 
+        if (lastShownList.size() == 0) {
+            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX_NONE);
+        }
+
         if (targetIndex.getZeroBased() >= lastShownList.size()) {
-            throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX);
+            if (lastShownList.size() == 1) {
+                throw new CommandException(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX_SINGLE);
+            }
+            throw new CommandException(String.format(Messages.MESSAGE_INVALID_PERSON_DISPLAYED_INDEX,
+                lastShownList.size()));
         }
 
         Person personToDelete = lastShownList.get(targetIndex.getZeroBased());
+        for (Meeting meeting : model.getFilteredMeetingList()) {
+            if (meeting.getPersonList().contains(personToDelete.getName().fullName)) {
+                throw new CommandException(MESSAGE_PERSON_HAS_MEETING);
+            }
+        }
+
         model.deletePerson(personToDelete);
         return new CommandResult(String.format(MESSAGE_DELETE_PERSON_SUCCESS, Messages.format(personToDelete)));
     }

@@ -99,7 +99,7 @@ public class TypicalAddressBook {
             ab.addPerson(person);
         }
         for (Meeting meeting : getTypicalMeetings()) {
-            ab.addMeeting(meeting, ab.getPersonList());
+            ab.addMeeting(meeting, ab.getPersonList(), ab.getMeetingList());
         }
         return ab;
     }
@@ -108,6 +108,6 @@ public class TypicalAddressBook {
         return new ArrayList<>(Arrays.asList(ALICE, BENSON, CARL, DANIEL, ELLE, FIONA, GEORGE));
     }
     public static List<Meeting> getTypicalMeetings() {
-        return new ArrayList<>(Arrays.asList(MEETING1, MEETING2, MEETING3, MEETING4, MEETING5));
+        return new ArrayList<>(Arrays.asList(MEETING3, MEETING4, MEETING5));
     }
 }

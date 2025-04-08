@@ -19,7 +19,6 @@ import seedu.address.model.person.Phone;
 import seedu.address.model.person.Position;
 
 public class JsonAdaptedPersonTest {
-    private static final String INVALID_NAME = "R@chel";
     private static final String INVALID_PHONE = "+651234";
     private static final String INVALID_COMPANY = " ";
     private static final String INVALID_POSITION = " ";
@@ -41,15 +40,6 @@ public class JsonAdaptedPersonTest {
     public void toModelType_validPersonDetails_returnsPerson() throws Exception {
         JsonAdaptedPerson person = new JsonAdaptedPerson(BENSON);
         assertEquals(BENSON, person.toModelType());
-    }
-
-    @Test
-    public void toModelType_invalidName_throwsIllegalValueException() {
-        JsonAdaptedPerson person =
-                new JsonAdaptedPerson(INVALID_NAME, VALID_EMAIL, VALID_PHONE, VALID_COMPANY,
-                        VALID_POSITION, VALID_TAGS, VALID_IMPORTANCE);
-        String expectedMessage = Name.MESSAGE_CONSTRAINTS;
-        assertThrows(IllegalValueException.class, expectedMessage, person::toModelType);
     }
 
     @Test

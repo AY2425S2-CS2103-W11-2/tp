@@ -42,12 +42,12 @@ public class UniqueMeetingList implements Iterable<Meeting> {
      * Adds a meeting to the list.
      * The meeting must not already exist in the list.
      */
-    public void add(Meeting toAdd, ObservableList<Person> persons) {
+    public void add(Meeting toAdd, ObservableList<Person> persons, ObservableList<Meeting> meetings) {
         requireNonNull(toAdd);
         if (contains(toAdd)) {
             throw new DuplicateMeetingException();
         }
-        String exists = personsExist(toAdd, persons);
+        String exists = personsExist(toAdd, persons, meetings);
         if (exists != "true") {
             // add custom exception here
             throw new IllegalArgumentException(exists);
@@ -61,7 +61,8 @@ public class UniqueMeetingList implements Iterable<Meeting> {
      * {@code target} must exist in the list.
      * The meeting identity of {@code editedMeeting} must not be the same as another existing meeting in the list.
      */
-    public void setMeeting(Meeting target, Meeting editedMeeting, ObservableList<Person> persons) {
+    public void setMeeting(Meeting target, Meeting editedMeeting, ObservableList<Person> persons,
+            ObservableList<Meeting> meetings) {
         requireAllNonNull(target, editedMeeting);
 
         int index = internalList.indexOf(target);
@@ -73,7 +74,7 @@ public class UniqueMeetingList implements Iterable<Meeting> {
             throw new DuplicateMeetingException();
         }
 
-        String exists = personsExist(editedMeeting, persons);
+        String exists = personsExist(editedMeeting, persons, meetings);
         if (exists != "true") {
             // add custom exception here
             throw new IllegalArgumentException(exists);
@@ -102,10 +103,11 @@ public class UniqueMeetingList implements Iterable<Meeting> {
      * Replaces the contents of this list with {@code meetings}.
      * {@code meetings} must not contain duplicate meetings.
      */
-    public void setMeetings(List<Meeting> meetings, UniquePersonList persons) {
+    public void setMeetings(List<Meeting> meetings, UniquePersonList persons, UniqueMeetingList meetingList) {
         requireAllNonNull(persons);
         for (Meeting m : meetings) {
-            String exists = personsExist(m, persons.asUnmodifiableObservableList());
+            String exists = personsExist(m, persons.asUnmodifiableObservableList(),
+                    meetingList.asUnmodifiableObservableList());
             if (exists != "true") {
                 // add custom exception here
                 throw new IllegalArgumentException(exists);
@@ -155,11 +157,26 @@ public class UniqueMeetingList implements Iterable<Meeting> {
     /**
      * Returns "true" if {@code meeting} contains people who exist in the addressbook.
      */
-    private String personsExist(Meeting meeting, ObservableList<Person> persons) {
+    private String personsExist(Meeting meeting, ObservableList<Person> persons, ObservableList<Meeting> meetings) {
+        System.out.println("personsExist " + meeting.getPersonList());
+        // check if empty string in persons
+        if (meeting.getPersonList().isEmpty() || meeting.getPersonList().contains("")) {
+            return "Contact name after mp/ prefix cannot be left empty. "
+                + "Please retry the command without any empty contact name field(s) (e.g. mp/  )";
+        }
         // check if every person in the meeting is in the address book
         for (String p : meeting.getPersonList()) {
             if (!persons.stream().anyMatch(person -> person.getName().toString().equals(p))) {
-                return "Person " + p + " is not in the address book.";
+                return "Contact " + p + " is not in the address book.";
+            }
+        }
+        for (Meeting m : meetings) {
+            if (m.getDateTime().equals(meeting.getDateTime())) {
+                for (String p : meeting.getPersonList()) {
+                    if (m.getPersonList().contains(p)) {
+                        return "Meeting with " + p + " already exists at " + m.getDateTime() + ".";
+                    }
+                }
             }
         }
         return "true";
